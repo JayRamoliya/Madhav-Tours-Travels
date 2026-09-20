@@ -157,12 +157,11 @@ export const HomePage: React.FC = () => {
               className="lg:col-span-5 flex justify-center"
             >
               <div className="relative p-6 sm:p-10 rounded-3xl bg-white/90 backdrop-blur-md border border-[#D4A017]/40 shadow-2xl gold-glow group">
-
                 <img
-  src="/logo.png"
-  alt="Madhav Tours & Travels"
-  className="mx-auto h-72 sm:h-80 lg:h-96 w-auto object-contain"
-/>
+                  src="/logo.webp"
+                  alt="Madhav Tours & Travels"
+                  className="mx-auto h-72 sm:h-80 lg:h-96 w-auto object-contain"
+                />
 
                 <div className="mt-4 pt-3 border-t border-slate-100 text-center">
                   <span className="inline-block text-[11px] font-semibold text-slate-500 tracking-wider uppercase">

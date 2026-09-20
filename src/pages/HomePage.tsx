@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { motion } from "motion/react";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { motion } from 'motion/react';
 import {
   MessageSquare,
   Phone,
@@ -17,13 +17,14 @@ import {
   Calendar,
   Compass,
   CheckCircle2,
-} from "lucide-react";
-import { BrandLogo } from "../components/common/BrandLogo";
-import { FluteDivider } from "../components/common/FluteDivider";
-import { PeacockCorner } from "../components/common/PeacockCorner";
-import { SEO } from "../components/common/SEO";
-import { InquiryModal } from "../components/common/InquiryModal";
-import { InquiryForm } from "../components/common/InquiryForm";
+} from 'lucide-react';
+import { BrandLogo } from '../components/common/BrandLogo';
+import { FluteDivider } from '../components/common/FluteDivider';
+import { PeacockCorner } from '../components/common/PeacockCorner';
+import { SEO } from '../components/common/SEO';
+import { InquiryModal } from '../components/common/InquiryModal';
+import { InquiryForm } from '../components/common/InquiryForm';
+import { HeroSlider } from '../components/home/HeroSlider';
 import {
   COMPANY_DETAILS,
   SERVICES_LIST,
@@ -31,32 +32,30 @@ import {
   WHY_CHOOSE_US,
   TESTIMONIALS,
   createWhatsAppLink,
-} from "../data/travelData";
+} from '../data/travelData';
 
 export const HomePage: React.FC = () => {
-  const [selectedDestination, setSelectedDestination] = useState<string | null>(
-    null,
-  );
+  const [selectedDestination, setSelectedDestination] = useState<string | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
 
-  const openInquiryFor = (destinationTitle: string) => {
-    setSelectedDestination(destinationTitle);
+  const openInquiryFor = (destinationTitle?: string) => {
+    setSelectedDestination(destinationTitle || 'General Travel Inquiry');
     setModalOpen(true);
   };
 
   const getWhyIcon = (iconName: string) => {
     switch (iconName) {
-      case "ShieldCheck":
+      case 'ShieldCheck':
         return <ShieldCheck className="w-6 h-6 text-[#00A86B]" />;
-      case "Zap":
+      case 'Zap':
         return <Zap className="w-6 h-6 text-[#D4A017]" />;
-      case "BadgePercent":
+      case 'BadgePercent':
         return <BadgePercent className="w-6 h-6 text-[#C1122F]" />;
-      case "Sliders":
+      case 'Sliders':
         return <Sliders className="w-6 h-6 text-[#0B5CAD]" />;
-      case "HeartHandshake":
+      case 'HeartHandshake':
         return <HeartHandshake className="w-6 h-6 text-[#00A86B]" />;
-      case "PhoneCall":
+      case 'PhoneCall':
         return <PhoneCall className="w-6 h-6 text-[#D4A017]" />;
       default:
         return <Sparkles className="w-6 h-6 text-[#D4A017]" />;
@@ -70,109 +69,10 @@ export const HomePage: React.FC = () => {
         description="Experience sacred pilgrimages, domestic escapes, and international luxury holidays with Madhav Tours & Travels. Tailored tour quotes, luxury hotels, flights, and personal chauffeur cabs."
       />
 
-      <section className="relative overflow-hidden pt-6 pb-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#FAF7F0] via-white to-[#FAF7F0]">
-        {/* Subtle radial celestial light in background */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-radial from-[#D4A017]/10 via-[#0B5CAD]/5 to-transparent blur-3xl pointer-events-none" />
-
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            {/* Left Content Column */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="lg:col-span-7 text-center lg:text-left space-y-6"
-            >
-              {/* Sacred Sub-Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FAF7F0] border border-[#D4A017]/40 text-[#0B5CAD] text-xs font-semibold uppercase tracking-wider shadow-xs">
-                <Sparkles className="w-3.5 h-3.5 text-[#D4A017]" />
-                <span>Bespoke Indian Luxury & Global Journeys</span>
-              </div>
-
-              {/* Main Headline */}
-              <div className="space-y-2">
-                <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.18] sm:leading-[1.15]">
-                  Experience Journeys Blessed With{" "}
-                  <span className="text-[#C1122F] italic">Elegance</span> &{" "}
-                  <span className="text-[#0B5CAD]">Devotion</span>
-                </h1>
-                <p className="font-serif text-lg sm:text-xl md:text-2xl text-[#0B5CAD] font-medium pt-1">
-                  Madhav Tours & Travels
-                </p>
-              </div>
-
-              {/* Subtitle */}
-              <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
-                Domestic & International Tours &bull; Hotel, Air, Train & Taxi
-                Assistance. We craft personalized, unhurried travel itineraries
-                with handpicked stays, verified private chauffeurs, and
-                dedicated 24/7 concierge guidance.
-              </p>
-
-              {/* Action Buttons as requested: Get Free Quote & WhatsApp Inquiry */}
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-                <a
-                  href="#inquiry-section"
-                  id="hero-quote-btn"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-gradient-to-r from-[#0B5CAD] to-[#084887] text-white font-medium text-sm shadow-md hover:shadow-xl transition-all transform hover:-translate-y-0.5 active:translate-y-0"
-                >
-                  <span>Get Free Quote</span>
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-
-                <a
-                  href={createWhatsAppLink()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  id="hero-whatsapp-btn"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-xl bg-[#00A86B] hover:bg-[#00945e] text-white font-medium text-sm shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0"
-                >
-                  <MessageSquare className="w-4 h-4 fill-current" />
-                  <span>WhatsApp Inquiry</span>
-                </a>
-              </div>
-
-              {/* Trust Indicators */}
-              <div className="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-slate-500 font-medium">
-                <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#00A86B]" />
-                  <span>No Booking Fees</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#00A86B]" />
-                  <span>Customized Itineraries</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#00A86B]" />
-                  <span>Verified 4-Star & 5-Star Stays</span>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Right Side: Prominent Logo Presentation with smooth fade & flute glow */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.92 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.9, delay: 0.2 }}
-              className="lg:col-span-5 flex justify-center"
-            >
-              <div className="relative p-6 sm:p-10 rounded-3xl bg-white/90 backdrop-blur-md border border-[#D4A017]/40 shadow-2xl gold-glow group">
-                <img
-                  src="/logo.webp"
-                  alt="Madhav Tours & Travels"
-                  className="mx-auto h-72 sm:h-80 lg:h-96 w-auto object-contain"
-                />
-
-                <div className="mt-4 pt-3 border-t border-slate-100 text-center">
-                  <span className="inline-block text-[11px] font-semibold text-slate-500 tracking-wider uppercase">
-                    Trusted Tour Curator &bull; India &bull; Oman &bull; Global
-                  </span>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      {/* ========================================================= */}
+      {/* 1. HERO SECTION - Premium 4-Slide Animated Hero Slider */}
+      {/* ========================================================= */}
+      <HeroSlider onOpenInquiry={openInquiryFor} />
 
       {/* Decorative Krishna Flute Divider */}
       <FluteDivider />
@@ -190,8 +90,7 @@ export const HomePage: React.FC = () => {
             Our Bespoke Travel Offerings
           </h2>
           <p className="text-sm sm:text-base text-slate-600 mt-2">
-            Every service is handled by personal specialists. Inquire directly
-            for tailored quotations, flight selections, and private chauffeurs.
+            Every service is handled by personal specialists. Inquire directly for tailored quotations, flight selections, and private chauffeurs.
           </p>
         </div>
 
@@ -272,8 +171,7 @@ export const HomePage: React.FC = () => {
               Signature Destinations
             </h2>
             <p className="text-sm sm:text-base text-slate-600 mt-1 max-w-xl">
-              From the sacred peaks of Kedarnath and backwaters of Kerala to the
-              glittering skyscrapers of Dubai and tranquil villas of Bali.
+              From the sacred peaks of Kedarnath and backwaters of Kerala to the glittering skyscrapers of Dubai and tranquil villas of Bali.
             </p>
           </div>
 
@@ -397,8 +295,7 @@ export const HomePage: React.FC = () => {
             Why Discerning Travelers Choose Us
           </h2>
           <p className="text-sm sm:text-base text-slate-600 mt-2">
-            We treat your pilgrimage or luxury holiday with sacred devotion.
-            Honest guidance, punctual chauffeurs, and zero unexpected charges.
+            We treat your pilgrimage or luxury holiday with sacred devotion. Honest guidance, punctual chauffeurs, and zero unexpected charges.
           </p>
         </div>
 
@@ -439,8 +336,7 @@ export const HomePage: React.FC = () => {
             Stories From Our Valued Guests
           </h2>
           <p className="text-sm sm:text-base text-slate-600 mt-1">
-            Genuine experiences shared by families, pilgrims, and luxury
-            travelers who trusted our personal coordination.
+            Genuine experiences shared by families, pilgrims, and luxury travelers who trusted our personal coordination.
           </p>
         </div>
 
@@ -453,9 +349,7 @@ export const HomePage: React.FC = () => {
               <PeacockCorner position="top-right" size={36} />
 
               <div className="mb-4">
-                <div className="text-[#D4A017] text-2xl font-serif leading-none mb-2">
-                  &ldquo;
-                </div>
+                <div className="text-[#D4A017] text-2xl font-serif leading-none mb-2">&ldquo;</div>
                 <p className="text-sm text-slate-700 italic leading-relaxed">
                   {t.comment}
                 </p>
@@ -488,9 +382,6 @@ export const HomePage: React.FC = () => {
         className="py-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto"
       >
         <div className="relative rounded-3xl bg-gradient-to-br from-[#072447] via-[#0B5CAD] to-[#05325f] text-white p-8 sm:p-12 md:p-16 shadow-2xl overflow-hidden border-2 border-[#D4A017]/40">
-          {/* Subtle peacock feather corner accents inside card */}
-          <PeacockCorner position="top-left" size={60} />
-          <PeacockCorner position="bottom-right" size={60} />
 
           <div className="relative z-10 max-w-3xl mx-auto text-center space-y-6">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-[#D4A017]/40 text-[#D4A017] text-xs font-semibold uppercase tracking-wider">
@@ -503,9 +394,7 @@ export const HomePage: React.FC = () => {
             </h2>
 
             <p className="text-sm sm:text-base text-slate-200 max-w-xl mx-auto leading-relaxed">
-              No rigid group tours. No automated online bookings. Speak directly
-              with your dedicated travel advisor and receive a tailored
-              quotation via WhatsApp or phone.
+              No rigid group tours. No automated online bookings. Speak directly with your dedicated travel advisor and receive a tailored quotation via WhatsApp or phone.
             </p>
 
             {/* Buttons: WhatsApp & Call Now as requested */}
@@ -546,7 +435,7 @@ export const HomePage: React.FC = () => {
       <InquiryModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
-        destination={selectedDestination || ""}
+        destination={selectedDestination || ''}
       />
     </div>
   );

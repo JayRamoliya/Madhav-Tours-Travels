@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Compass, Home, Phone, Sparkles } from 'lucide-react';
 import { BrandLogo } from '../components/common/BrandLogo';
 import { FluteDivider } from '../components/common/FluteDivider';
-import { PeacockCorner } from '../components/common/PeacockCorner';
 import { SEO } from '../components/common/SEO';
 import { COMPANY_DETAILS, createWhatsAppLink } from '../data/travelData';
 
@@ -16,8 +15,6 @@ export const NotFoundPage: React.FC = () => {
       />
 
       <div className="relative max-w-xl w-full bg-white rounded-3xl p-8 sm:p-12 border border-[#D4A017]/40 shadow-2xl text-center overflow-hidden">
-        <PeacockCorner position="top-left" size={50} />
-        <PeacockCorner position="bottom-right" size={50} />
 
         <div className="mx-auto mb-4 flex justify-center">
           <BrandLogo variant="horizontal" />

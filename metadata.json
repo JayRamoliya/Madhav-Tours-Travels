@@ -1,0 +1,6 @@
+{
+  "name": "Madhav Tours & Travels",
+  "description": "Premium luxury tours and travels brand providing curated domestic and international tour packages, luxury hotel reservations, flight ticketing, train assistance, and personalized chauffeur services.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,11 +1,20 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Sparkles, Heart, Compass, Shield, Award, Users, CheckCircle2, ArrowRight } from 'lucide-react';
-import { BrandLogo } from '../components/common/BrandLogo';
-import { FluteDivider } from '../components/common/FluteDivider';
-import { PeacockCorner } from '../components/common/PeacockCorner';
-import { SEO } from '../components/common/SEO';
-import { COMPANY_DETAILS, createWhatsAppLink } from '../data/travelData';
+import React from "react";
+import { Link } from "react-router-dom";
+import {
+  Sparkles,
+  Heart,
+  Compass,
+  Shield,
+  Award,
+  Users,
+  CheckCircle2,
+  ArrowRight,
+} from "lucide-react";
+import { BrandLogo } from "../components/common/BrandLogo";
+import { FluteDivider } from "../components/common/FluteDivider";
+import { PeacockCorner } from "../components/common/PeacockCorner";
+import { SEO } from "../components/common/SEO";
+import { COMPANY_DETAILS, createWhatsAppLink } from "../data/travelData";
 
 export const AboutPage: React.FC = () => {
   return (
@@ -13,7 +22,7 @@ export const AboutPage: React.FC = () => {
       <SEO
         title="About Us | Madhav Tours & Travels"
         description="Learn the story of Madhav Tours & Travels. Inspired by Lord Krishna's eternal grace, our mission is to offer personalized, honest, and luxury travel assistance across India and the globe."
-        breadcrumbs={[{ name: 'About Us', path: '/about' }]}
+        breadcrumbs={[{ name: "About Us", path: "/about" }]}
       />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -24,36 +33,49 @@ export const AboutPage: React.FC = () => {
             Sacred Hospitality & Personalized Care
           </div>
           <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
-            The Story of <span className="text-[#C1122F]">Madhav Tours & Travels</span>
+            The Story of{" "}
+            <span className="text-[#C1122F]">Madhav Tours & Travels</span>
           </h1>
           <p className="text-base text-slate-600 mt-3 leading-relaxed">
-            Founded with the conviction that travel is not just logistics, but a soul-enriching experience where every guest deserves honesty, comfort, and sincere attention.
+            Founded with the conviction that travel is not just logistics, but a
+            soul-enriching experience where every guest deserves honesty,
+            comfort, and sincere attention.
           </p>
         </div>
 
         {/* Brand Emblem Spotlight Card */}
         <div className="relative bg-white rounded-3xl p-8 sm:p-12 border border-[#D4A017]/40 shadow-xl mb-14 overflow-hidden">
-          <PeacockCorner position="top-left" size={60} />
-          <PeacockCorner position="top-right" size={60} />
-          <PeacockCorner position="bottom-left" size={60} />
-          <PeacockCorner position="bottom-right" size={60} />
-
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
             <div className="md:col-span-5 flex justify-center">
               <div className="p-4 bg-[#FAF7F0] rounded-2xl border border-[#D4A017]/30 shadow-inner">
-                <BrandLogo variant="full" />
+                <img
+                  src="/logo.webp"
+                  alt="Madhav Tours & Travels Logo"
+                  className="w-full max-w-[280px] sm:max-w-[320px] max-h-[290px] object-contain drop-shadow-md mx-auto transition-transform duration-500 hover:scale-102"
+                  onError={() => setLogoError(true)}
+                  loading="eager"
+                />
               </div>
             </div>
 
             <div className="md:col-span-7 space-y-4 text-slate-700 leading-relaxed text-sm sm:text-base">
               <h2 className="font-serif text-2xl sm:text-3xl font-bold text-slate-900">
-                Inspired by the Divine Grace of <span className="text-[#0B5CAD]">Lord Krishna</span>
+                Inspired by the Divine Grace of{" "}
+                <span className="text-[#0B5CAD]">Lord Krishna</span>
               </h2>
               <p>
-                The name <strong className="text-[#C1122F]">Madhav</strong> reflects sweetness, guidance, and unwavering companionship. Just as Lord Krishna stood as the eternal charioteer (Partha Sarathi) offering calm direction through every crossroad, our philosophy is to be your steadfast travel guide.
+                The name <strong className="text-[#C1122F]">Madhav</strong>{" "}
+                reflects sweetness, guidance, and unwavering companionship. Just
+                as Lord Krishna stood as the eternal charioteer (Partha Sarathi)
+                offering calm direction through every crossroad, our philosophy
+                is to be your steadfast travel guide.
               </p>
               <p>
-                From the golden hues of the sacred flute (Bansuri) to the iridescent serenity of the peacock feather (Mor Pankh) and auspicious call of the conch (Shankha), our visual identity reminds us daily to deliver hospitality infused with warmth, integrity, and reverence for every traveler.
+                From the golden hues of the sacred flute (Bansuri) to the
+                iridescent serenity of the peacock feather (Mor Pankh) and
+                auspicious call of the conch (Shankha), our visual identity
+                reminds us daily to deliver hospitality infused with warmth,
+                integrity, and reverence for every traveler.
               </p>
             </div>
           </div>
@@ -72,17 +94,24 @@ export const AboutPage: React.FC = () => {
               Our Sacred Mission
             </h3>
             <p className="text-sm text-slate-600 leading-relaxed">
-              To strip away the stress, impersonal automated portals, and unexpected hidden charges that plague modern tourism. We provide human-centric, customized itineraries tailored to elderly pilgrims, vacationing couples, and extended families who value peace of mind above all else.
+              To strip away the stress, impersonal automated portals, and
+              unexpected hidden charges that plague modern tourism. We provide
+              human-centric, customized itineraries tailored to elderly
+              pilgrims, vacationing couples, and extended families who value
+              peace of mind above all else.
             </p>
             <ul className="mt-4 space-y-2 text-xs text-slate-700 font-medium">
               <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-[#00A86B]" /> Authentic, transparent advice without commission bias
+                <CheckCircle2 className="w-4 h-4 text-[#00A86B]" /> Authentic,
+                transparent advice without commission bias
               </li>
               <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-[#00A86B]" /> Prioritizing comfort, hygiene, and dietary preferences
+                <CheckCircle2 className="w-4 h-4 text-[#00A86B]" /> Prioritizing
+                comfort, hygiene, and dietary preferences
               </li>
               <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-[#00A86B]" /> Direct concierge support through WhatsApp and phone
+                <CheckCircle2 className="w-4 h-4 text-[#00A86B]" /> Direct
+                concierge support through WhatsApp and phone
               </li>
             </ul>
           </div>
@@ -96,17 +125,24 @@ export const AboutPage: React.FC = () => {
               Our Eternal Vision
             </h3>
             <p className="text-sm text-slate-600 leading-relaxed">
-              To become India&apos;s and the Gulf&apos;s most cherished luxury pilgrimage and bespoke leisure travel partner, celebrated for genuine care, impeccable vehicular comfort, and hand-selected luxury hotel relationships that turn every tour into a lifelong memory.
+              To become India&apos;s and the Gulf&apos;s most cherished luxury
+              pilgrimage and bespoke leisure travel partner, celebrated for
+              genuine care, impeccable vehicular comfort, and hand-selected
+              luxury hotel relationships that turn every tour into a lifelong
+              memory.
             </p>
             <ul className="mt-4 space-y-2 text-xs text-slate-700 font-medium">
               <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-[#00A86B]" /> Setting gold standards in elder-friendly pilgrimage yatras
+                <CheckCircle2 className="w-4 h-4 text-[#00A86B]" /> Setting gold
+                standards in elder-friendly pilgrimage yatras
               </li>
               <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-[#00A86B]" /> Expanding bespoke global itineraries to Dubai, Bali, and Europe
+                <CheckCircle2 className="w-4 h-4 text-[#00A86B]" /> Expanding
+                bespoke global itineraries to Dubai, Bali, and Europe
               </li>
               <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-[#00A86B]" /> Maintaining an inquiry-driven, relationship-first ethos
+                <CheckCircle2 className="w-4 h-4 text-[#00A86B]" /> Maintaining
+                an inquiry-driven, relationship-first ethos
               </li>
             </ul>
           </div>
@@ -119,7 +155,8 @@ export const AboutPage: React.FC = () => {
               Our Customer-First Pillars
             </h3>
             <p className="text-sm text-slate-600">
-              How we differentiate ourselves from mass-market automated travel websites.
+              How we differentiate ourselves from mass-market automated travel
+              websites.
             </p>
           </div>
 
@@ -128,9 +165,13 @@ export const AboutPage: React.FC = () => {
               <div className="w-10 h-10 rounded-full bg-white text-[#C1122F] flex items-center justify-center mx-auto mb-3 shadow-xs">
                 <Heart className="w-5 h-5" />
               </div>
-              <h4 className="font-serif text-lg font-bold text-slate-900 mb-1">Empathetic Pacing</h4>
+              <h4 className="font-serif text-lg font-bold text-slate-900 mb-1">
+                Empathetic Pacing
+              </h4>
               <p className="text-xs text-slate-600 leading-relaxed">
-                We never rush your journey. Sightseeing schedules are planned with relaxed mornings, comfortable transit stops, and zero exhausting checklist marathons.
+                We never rush your journey. Sightseeing schedules are planned
+                with relaxed mornings, comfortable transit stops, and zero
+                exhausting checklist marathons.
               </p>
             </div>
 
@@ -138,9 +179,13 @@ export const AboutPage: React.FC = () => {
               <div className="w-10 h-10 rounded-full bg-white text-[#0B5CAD] flex items-center justify-center mx-auto mb-3 shadow-xs">
                 <Users className="w-5 h-5" />
               </div>
-              <h4 className="font-serif text-lg font-bold text-slate-900 mb-1">Tailored To Your Family</h4>
+              <h4 className="font-serif text-lg font-bold text-slate-900 mb-1">
+                Tailored To Your Family
+              </h4>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Whether requesting pure vegetarian / Jain meals in Europe or requiring lower berths and wheelchair accessibility for grandparents, we take care of it all.
+                Whether requesting pure vegetarian / Jain meals in Europe or
+                requiring lower berths and wheelchair accessibility for
+                grandparents, we take care of it all.
               </p>
             </div>
 
@@ -148,9 +193,13 @@ export const AboutPage: React.FC = () => {
               <div className="w-10 h-10 rounded-full bg-white text-[#00A86B] flex items-center justify-center mx-auto mb-3 shadow-xs">
                 <Shield className="w-5 h-5" />
               </div>
-              <h4 className="font-serif text-lg font-bold text-slate-900 mb-1">Zero Hidden Costs</h4>
+              <h4 className="font-serif text-lg font-bold text-slate-900 mb-1">
+                Zero Hidden Costs
+              </h4>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Every quote outlines inclusions with total clarity—driver allowances, toll taxes, hotel taxes, and safari permits are stated upfront.
+                Every quote outlines inclusions with total clarity—driver
+                allowances, toll taxes, hotel taxes, and safari permits are
+                stated upfront.
               </p>
             </div>
           </div>
@@ -162,11 +211,14 @@ export const AboutPage: React.FC = () => {
             Speak Directly With Your Personal Tour Planner
           </h3>
           <p className="text-sm text-slate-200 max-w-xl mx-auto mb-6">
-            We are just a phone call or WhatsApp message away. Let us craft your dream vacation with royal Indian warmth.
+            We are just a phone call or WhatsApp message away. Let us craft your
+            dream vacation with royal Indian warmth.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href={createWhatsAppLink("Hi Madhav Tours & Travels, I'd like to consult regarding a custom travel plan.")}
+              href={createWhatsAppLink(
+                "Hi Madhav Tours & Travels, I'd like to consult regarding a custom travel plan.",
+              )}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#00A86B] text-white font-medium text-sm shadow-md hover:bg-[#00925d]"

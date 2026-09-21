@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { X } from 'lucide-react';
 import { InquiryForm } from './InquiryForm';
-import { PeacockCorner } from './PeacockCorner';
 
 interface InquiryModalProps {
   isOpen: boolean;
@@ -43,8 +42,6 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({
         className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl overflow-hidden border border-[#D4A017]/40 max-h-[90vh] overflow-y-auto my-auto"
         onClick={(e) => e.stopPropagation()}
       >
-        <PeacockCorner position="top-left" size={48} />
-        <PeacockCorner position="top-right" size={48} />
 
         {/* Close Button */}
         <button

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Sparkles, Calendar, MapPin, CheckCircle2, MessageSquare, Globe, Plane } from 'lucide-react';
 import { FluteDivider } from '../components/common/FluteDivider';
-import { PeacockCorner } from '../components/common/PeacockCorner';
 import { SEO } from '../components/common/SEO';
 import { InquiryModal } from '../components/common/InquiryModal';
 import { INTERNATIONAL_PACKAGES, createWhatsAppLink } from '../data/travelData';

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Sparkles, Calendar, MapPin, CheckCircle2, MessageSquare, Filter } from 'lucide-react';
 import { FluteDivider } from '../components/common/FluteDivider';
-import { PeacockCorner } from '../components/common/PeacockCorner';
 import { SEO } from '../components/common/SEO';
 import { InquiryModal } from '../components/common/InquiryModal';
 import { DOMESTIC_PACKAGES, createWhatsAppLink } from '../data/travelData';
@@ -202,8 +201,6 @@ export const DomesticToursPage: React.FC = () => {
 
         {/* Sacred Pilgrimage Special Banner */}
         <div className="relative rounded-3xl bg-white p-8 sm:p-10 border-2 border-[#D4A017]/50 shadow-xl overflow-hidden text-center max-w-4xl mx-auto">
-          <PeacockCorner position="top-left" size={50} />
-          <PeacockCorner position="bottom-right" size={50} />
 
           <h3 className="font-serif text-2xl sm:text-3xl font-bold text-slate-900 mb-2">
             Planning Char Dham, Vaishno Devi, or Ayodhya-Kashi?

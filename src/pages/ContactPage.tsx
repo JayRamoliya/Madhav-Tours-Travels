@@ -1,17 +1,25 @@
-import React from 'react';
-import { Phone, MessageSquare, Mail, MapPin, Clock, Sparkles, CheckCircle2, Globe } from 'lucide-react';
-import { FluteDivider } from '../components/common/FluteDivider';
-import { SEO } from '../components/common/SEO';
-import { InquiryForm } from '../components/common/InquiryForm';
-import { COMPANY_DETAILS, createWhatsAppLink } from '../data/travelData';
+import React from "react";
+import {
+  Phone,
+  MessageSquare,
+  Mail,
+  MapPin,
+  Clock,
+  Sparkles,
+  CheckCircle2,
+  Globe,
+} from "lucide-react";
+import { FluteDivider } from "../components/common/FluteDivider";
+import { SEO } from "../components/common/SEO";
+import { InquiryForm } from "../components/common/InquiryForm";
+import { COMPANY_DETAILS, createWhatsAppLink } from "../data/travelData";
 
 export const ContactPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#FAF7F0] text-slate-800 pt-24 pb-16">
       <SEO
-        title="Contact Us | Madhav Tours & Travels"
-        description="Contact Madhav Tours & Travels directly. Call 7069212494 or message on WhatsApp at +96878023801. Personalized travel consultation with zero booking fees."
-        breadcrumbs={[{ name: 'Contact Us', path: '/contact' }]}
+        title="Contact Madhav Tours & Travels | Tour Packages, Taxi & Travel Assistance"
+        description="Contact Madhav Tours & Travels for tour packages, taxi booking, pilgrimage tours and holiday planning. Call 7069212494 or WhatsApp for instant travel assistance."
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -22,10 +30,13 @@ export const ContactPage: React.FC = () => {
             Direct Concierge Assistance
           </div>
           <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
-            Connect With Our <span className="text-[#C1122F]">Travel Curators</span>
+            Connect With Our{" "}
+            <span className="text-[#C1122F]">Travel Curators</span>
           </h1>
           <p className="text-base text-slate-600 mt-2 leading-relaxed">
-            We do not operate impersonal automated call centers. When you call or WhatsApp us, you speak directly with experienced tour curators who understand your expectations.
+            We do not operate impersonal automated call centers. When you call
+            or WhatsApp us, you speak directly with experienced tour curators
+            who understand your expectations.
           </p>
         </div>
 
@@ -126,8 +137,7 @@ export const ContactPage: React.FC = () => {
 
         <FluteDivider />
 
-        {/* Form and Map Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Main Inquiry Form */}
           <div className="lg:col-span-7">
             <InquiryForm
@@ -137,28 +147,39 @@ export const ContactPage: React.FC = () => {
           </div>
 
           {/* Interactive Information & Google Map Showcase */}
-          <div className="lg:col-span-5 space-y-6">
+          <div className="lg:col-span-5">
             <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#D4A017]/30 shadow-md">
-
               <h3 className="font-serif text-xl font-bold text-slate-900 mb-2">
                 Why Book Inquiries With Us?
               </h3>
               <p className="text-xs text-slate-600 mb-4 leading-relaxed">
-                We believe sacred journeys and relaxing holidays should start with complete trust.
+                We believe sacred journeys and relaxing holidays should start
+                with complete trust.
               </p>
 
               <div className="space-y-3 text-xs text-slate-700">
                 <div className="flex items-start gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-[#00A86B] shrink-0 mt-0.5" />
-                  <span><strong>Zero upfront hidden costs:</strong> We provide detailed breakdown of hotels, vehicles, tolls, and taxes.</span>
+                  <span>
+                    <strong>Zero upfront hidden costs:</strong> We provide
+                    detailed breakdown of hotels, vehicles, tolls, and taxes.
+                  </span>
                 </div>
                 <div className="flex items-start gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-[#00A86B] shrink-0 mt-0.5" />
-                  <span><strong>Direct WhatsApp Itinerary cards:</strong> Receive hotel photos, day-by-day sightseeing, and driver contact right on your phone.</span>
+                  <span>
+                    <strong>Direct WhatsApp Itinerary cards:</strong> Receive
+                    hotel photos, day-by-day sightseeing, and driver contact
+                    right on your phone.
+                  </span>
                 </div>
                 <div className="flex items-start gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-[#00A86B] shrink-0 mt-0.5" />
-                  <span><strong>Elder-safe & vegetarian friendly:</strong> We prioritize comfort, wheelchair assistance, and vegetarian dining.</span>
+                  <span>
+                    <strong>Elder-safe & vegetarian friendly:</strong> We
+                    prioritize comfort, wheelchair assistance, and vegetarian
+                    dining.
+                  </span>
                 </div>
               </div>
 
@@ -170,50 +191,41 @@ export const ContactPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Google Map Representation */}
-            <div className="bg-white rounded-3xl overflow-hidden border border-[#D4A017]/30 shadow-md">
-              <div className="p-4 border-b border-slate-100 flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-[#C1122F]" />
-                  <span className="font-serif text-sm font-bold text-slate-900">
-                    Madhav Tours & Travels Head Office
-                  </span>
-                </div>
-                <span className="text-[10px] text-slate-400 uppercase font-semibold">
-                  Map View
+          </div>
+        </div>
+        <div className="mt-12">
+          <div className="bg-white rounded-3xl overflow-hidden border border-[#D4A017]/30 shadow-md">
+            <div className="p-5 border-b border-slate-100 flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <MapPin className="w-5 h-5 text-[#C1122F]" />
+                <span className="font-serif text-lg font-bold text-slate-900">
+                  Visit Madhav Tours & Travels
                 </span>
               </div>
+              <span className="text-xs text-slate-400 uppercase font-semibold">
+                Location Map
+              </span>
+            </div>
 
-              {/* Styled interactive-looking Map Container */}
-              <div className="relative h-64 w-full bg-slate-100 flex items-center justify-center overflow-hidden">
-                <iframe
-                  title="Madhav Tours & Travels Location"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.9367468166946!2d72.5698!3d23.0258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDAxJzMyLjkiTiA3MsKwMzQnMTEuMyJF!5e0!3m2!1sen!2sin!4v1650000000000!5m2!1sen!2sin"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen={false}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="w-full h-full grayscale-25"
-                />
+            <div className="relative h-[450px] w-full">
+              <iframe
+                title="Madhav Tours & Travels Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3457.3775538614555!2d68.968164!3d22.2401336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39569d83cc60a3d5%3A0x555166d750e70b7a!2sHotel%20Uttam!5e1!3m2!1sen!2sin!4v1789963702519!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-full"
+              />
 
-                <div className="absolute bottom-3 left-3 right-3 bg-white/95 backdrop-blur-xs p-2.5 rounded-xl border border-[#D4A017]/30 shadow-md text-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1.5">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#00A86B] animate-pulse shrink-0" />
-                    <span className="font-medium text-slate-800 text-[11px] sm:text-xs line-clamp-1">
-                      Madhav Tours & Travels Head Office
-                    </span>
-                  </div>
-                  <a
-                    href="https://maps.google.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[11px] font-bold text-[#0B5CAD] hover:underline whitespace-nowrap self-end sm:self-auto"
-                  >
-                    Open in Maps &rarr;
-                  </a>
-                </div>
+              <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-slate-200">
+                <h4 className="font-semibold text-slate-900 text-sm">
+                  Madhav Tours & Travels
+                </h4>
+                <p className="text-xs text-slate-600 mt-1">
+                  Professional Tour Planning & Taxi Services
+                </p>
               </div>
             </div>
           </div>

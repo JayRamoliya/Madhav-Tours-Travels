@@ -16,6 +16,11 @@ export const COMPANY_DETAILS = {
     gold: '#D4A017',
     deepRed: '#C1122F',
     softIvory: '#FAF7F0',
+  },
+  social: {
+    facebook: '#',
+    instagram: '#',
+    youtube: 'https://www.youtube.com/channel/UCCcioLZGqIVISZ5_Xxawa2g'
   }
 };
 

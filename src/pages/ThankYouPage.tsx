@@ -3,7 +3,6 @@ import { Link, useLocation } from 'react-router-dom';
 import { CheckCircle2, MessageSquare, Phone, ArrowLeft, Sparkles, Calendar, User, MapPin } from 'lucide-react';
 import { BrandLogo } from '../components/common/BrandLogo';
 import { FluteDivider } from '../components/common/FluteDivider';
-import { PeacockCorner } from '../components/common/PeacockCorner';
 import { SEO } from '../components/common/SEO';
 import { COMPANY_DETAILS, createWhatsAppLink } from '../data/travelData';
 import { TravelInquiry } from '../types';
@@ -35,10 +34,6 @@ export const ThankYouPage: React.FC = () => {
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 w-full">
         <div className="relative bg-white rounded-3xl p-8 sm:p-12 border border-[#D4A017]/40 shadow-2xl text-center overflow-hidden">
-          <PeacockCorner position="top-left" size={60} />
-          <PeacockCorner position="top-right" size={60} />
-          <PeacockCorner position="bottom-left" size={60} />
-          <PeacockCorner position="bottom-right" size={60} />
 
           {/* Success Checkmark with Gold Ring */}
           <div className="w-20 h-20 rounded-full bg-emerald-50 border-2 border-[#00A86B] flex items-center justify-center mx-auto mb-6 shadow-md animate-bounce">

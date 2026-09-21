@@ -1,9 +1,19 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Phone, MessageSquare, Mail, MapPin, Clock, Heart, Shield, Award, Sparkles } from 'lucide-react';
-import { BrandLogo } from '../common/BrandLogo';
-import { FluteDivider } from '../common/FluteDivider';
-import { COMPANY_DETAILS, createWhatsAppLink } from '../../data/travelData';
+import React from "react";
+import { Link } from "react-router-dom";
+import {
+  Phone,
+  MessageSquare,
+  Mail,
+  MapPin,
+  Clock,
+  Heart,
+  Shield,
+  Award,
+  Sparkles,
+} from "lucide-react";
+import { BrandLogo } from "../common/BrandLogo";
+import { FluteDivider } from "../common/FluteDivider";
+import { COMPANY_DETAILS, createWhatsAppLink } from "../../data/travelData";
 
 export const Footer: React.FC = () => {
   return (
@@ -23,7 +33,9 @@ export const Footer: React.FC = () => {
             </div>
 
             <p className="text-sm text-slate-300 leading-relaxed">
-              Curating bespoke spiritual yatras, domestic escapes, and international luxury getaways. Inspired by eternal Indian grace, we treat every traveler as a cherished guest.
+              Curating bespoke spiritual yatras, domestic escapes, and
+              international luxury getaways. Inspired by eternal Indian grace,
+              we treat every traveler as a cherished guest.
             </p>
 
             <div className="flex items-center gap-3 pt-2">
@@ -46,33 +58,57 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2.5 text-sm text-slate-300">
               <li>
-                <Link to="/" className="hover:text-[#D4A017] transition-colors flex items-center gap-2">
-                  <span className="text-[#D4A017] text-xs">&rsaquo;</span> Home Sanctuary
+                <Link
+                  to="/"
+                  className="hover:text-[#D4A017] transition-colors flex items-center gap-2"
+                >
+                  <span className="text-[#D4A017] text-xs">&rsaquo;</span> Home
+                  Sanctuary
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="hover:text-[#D4A017] transition-colors flex items-center gap-2">
-                  <span className="text-[#D4A017] text-xs">&rsaquo;</span> Our Story & Values
+                <Link
+                  to="/about"
+                  className="hover:text-[#D4A017] transition-colors flex items-center gap-2"
+                >
+                  <span className="text-[#D4A017] text-xs">&rsaquo;</span> Our
+                  Story & Values
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="hover:text-[#D4A017] transition-colors flex items-center gap-2">
-                  <span className="text-[#D4A017] text-xs">&rsaquo;</span> Concierge Services
+                <Link
+                  to="/services"
+                  className="hover:text-[#D4A017] transition-colors flex items-center gap-2"
+                >
+                  <span className="text-[#D4A017] text-xs">&rsaquo;</span>{" "}
+                  Concierge Services
                 </Link>
               </li>
               <li>
-                <Link to="/domestic-tours" className="hover:text-[#D4A017] transition-colors flex items-center gap-2">
-                  <span className="text-[#D4A017] text-xs">&rsaquo;</span> Domestic Packages
+                <Link
+                  to="/domestic-tours"
+                  className="hover:text-[#D4A017] transition-colors flex items-center gap-2"
+                >
+                  <span className="text-[#D4A017] text-xs">&rsaquo;</span>{" "}
+                  Domestic Packages
                 </Link>
               </li>
               <li>
-                <Link to="/international-tours" className="hover:text-[#D4A017] transition-colors flex items-center gap-2">
-                  <span className="text-[#D4A017] text-xs">&rsaquo;</span> International Packages
+                <Link
+                  to="/international-tours"
+                  className="hover:text-[#D4A017] transition-colors flex items-center gap-2"
+                >
+                  <span className="text-[#D4A017] text-xs">&rsaquo;</span>{" "}
+                  International Packages
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="hover:text-[#D4A017] transition-colors flex items-center gap-2">
-                  <span className="text-[#D4A017] text-xs">&rsaquo;</span> Request Custom Quote
+                <Link
+                  to="/contact"
+                  className="hover:text-[#D4A017] transition-colors flex items-center gap-2"
+                >
+                  <span className="text-[#D4A017] text-xs">&rsaquo;</span>{" "}
+                  Request Custom Quote
                 </Link>
               </li>
             </ul>
@@ -86,38 +122,66 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2.5 text-sm text-slate-300">
               <li>
-                <Link to="/hotel-booking" className="hover:text-[#00A86B] transition-colors flex items-center gap-2">
-                  <span className="text-[#00A86B] text-xs">&rsaquo;</span> Luxury Hotel Bookings
+                <Link
+                  to="/hotel-booking"
+                  className="hover:text-[#00A86B] transition-colors flex items-center gap-2"
+                >
+                  <span className="text-[#00A86B] text-xs">&rsaquo;</span>{" "}
+                  Luxury Hotel Bookings
                 </Link>
               </li>
               <li>
-                <Link to="/air-ticket-booking" className="hover:text-[#00A86B] transition-colors flex items-center gap-2">
-                  <span className="text-[#00A86B] text-xs">&rsaquo;</span> Air Ticket Booking
+                <Link
+                  to="/air-ticket-booking"
+                  className="hover:text-[#00A86B] transition-colors flex items-center gap-2"
+                >
+                  <span className="text-[#00A86B] text-xs">&rsaquo;</span> Air
+                  Ticket Booking
                 </Link>
               </li>
               <li>
-                <Link to="/train-ticket-booking" className="hover:text-[#00A86B] transition-colors flex items-center gap-2">
-                  <span className="text-[#00A86B] text-xs">&rsaquo;</span> Train Ticket Assistance
+                <Link
+                  to="/train-ticket-booking"
+                  className="hover:text-[#00A86B] transition-colors flex items-center gap-2"
+                >
+                  <span className="text-[#00A86B] text-xs">&rsaquo;</span> Train
+                  Ticket Assistance
                 </Link>
               </li>
               <li>
-                <Link to="/taxi-booking" className="hover:text-[#00A86B] transition-colors flex items-center gap-2">
-                  <span className="text-[#00A86B] text-xs">&rsaquo;</span> Outstation & Airport Cabs
+                <Link
+                  to="/taxi-booking"
+                  className="hover:text-[#00A86B] transition-colors flex items-center gap-2"
+                >
+                  <span className="text-[#00A86B] text-xs">&rsaquo;</span>{" "}
+                  Outstation & Airport Cabs
                 </Link>
               </li>
               <li>
-                <Link to="/personal-taxi" className="hover:text-[#00A86B] transition-colors flex items-center gap-2">
-                  <span className="text-[#00A86B] text-xs">&rsaquo;</span> Personal Luxury Chauffeur
+                <Link
+                  to="/personal-taxi"
+                  className="hover:text-[#00A86B] transition-colors flex items-center gap-2"
+                >
+                  <span className="text-[#00A86B] text-xs">&rsaquo;</span>{" "}
+                  Personal Luxury Chauffeur
                 </Link>
               </li>
               <li>
-                <Link to="/privacy-policy" className="hover:text-[#00A86B] transition-colors flex items-center gap-2">
-                  <span className="text-[#00A86B] text-xs">&rsaquo;</span> Privacy Policy
+                <Link
+                  to="/privacy-policy"
+                  className="hover:text-[#00A86B] transition-colors flex items-center gap-2"
+                >
+                  <span className="text-[#00A86B] text-xs">&rsaquo;</span>{" "}
+                  Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link to="/terms-and-conditions" className="hover:text-[#00A86B] transition-colors flex items-center gap-2">
-                  <span className="text-[#00A86B] text-xs">&rsaquo;</span> Terms & Conditions
+                <Link
+                  to="/terms-and-conditions"
+                  className="hover:text-[#00A86B] transition-colors flex items-center gap-2"
+                >
+                  <span className="text-[#00A86B] text-xs">&rsaquo;</span> Terms
+                  & Conditions
                 </Link>
               </li>
             </ul>
@@ -140,7 +204,9 @@ export const Footer: React.FC = () => {
                 </div>
                 <div>
                   <div className="text-xs text-slate-400">Calling Helpline</div>
-                  <div className="font-semibold text-white">{COMPANY_DETAILS.phoneDisplay}</div>
+                  <div className="font-semibold text-white">
+                    {COMPANY_DETAILS.phoneDisplay}
+                  </div>
                 </div>
               </a>
 
@@ -155,7 +221,9 @@ export const Footer: React.FC = () => {
                 </div>
                 <div>
                   <div className="text-xs text-slate-400">Direct WhatsApp</div>
-                  <div className="font-semibold text-white">{COMPANY_DETAILS.whatsappDisplay}</div>
+                  <div className="font-semibold text-white">
+                    {COMPANY_DETAILS.whatsappDisplay}
+                  </div>
                 </div>
               </a>
 
@@ -165,27 +233,54 @@ export const Footer: React.FC = () => {
                 </div>
                 <div>
                   <div className="text-xs text-slate-400">Inquiry Hours</div>
-                  <div className="text-white text-xs">{COMPANY_DETAILS.workingHours}</div>
+                  <div className="text-white text-xs">
+                    {COMPANY_DETAILS.workingHours}
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Social Placeholders as requested */}
             <div className="pt-2">
-              <div className="text-xs text-slate-400 mb-2 font-medium">Follow Our Journeys:</div>
+              <div className="text-xs text-slate-400 mb-2 font-medium">
+                Follow Our Journeys:
+              </div>
+
               <div className="flex items-center gap-2">
-                {['Facebook', 'Instagram', 'YouTube', 'WhatsApp'].map((platform) => (
-                  <a
-                    key={platform}
-                    href={platform === 'WhatsApp' ? createWhatsAppLink() : '#'}
-                    onClick={(e) => {
-                      if (platform !== 'WhatsApp') e.preventDefault();
-                    }}
-                    className="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/15 border border-white/10 text-xs text-slate-300 hover:text-[#D4A017] transition-all"
-                  >
-                    {platform}
-                  </a>
-                ))}
+                <a
+                  href={COMPANY_DETAILS.social.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/15 border border-white/10 text-xs text-slate-300 hover:text-[#D4A017] transition-all"
+                >
+                  Facebook
+                </a>
+
+                <a
+                  href={COMPANY_DETAILS.social.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/15 border border-white/10 text-xs text-slate-300 hover:text-[#D4A017] transition-all"
+                >
+                  Instagram
+                </a>
+
+                <a
+                  href={COMPANY_DETAILS.social.youtube}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/15 border border-white/10 text-xs text-slate-300 hover:text-[#D4A017] transition-all"
+                >
+                  YouTube
+                </a>
+
+                <a
+                  href={createWhatsAppLink()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/15 border border-white/10 text-xs text-slate-300 hover:text-[#D4A017] transition-all"
+                >
+                  WhatsApp
+                </a>
               </div>
             </div>
           </div>
@@ -195,16 +290,25 @@ export const Footer: React.FC = () => {
         <div className="py-4 px-6 rounded-xl bg-white/5 border border-[#D4A017]/20 text-xs text-slate-300 text-center max-w-3xl mx-auto my-4">
           <p className="flex items-center justify-center gap-1.5 flex-wrap">
             <Sparkles className="w-3.5 h-3.5 text-[#D4A017]" />
-            <span className="font-semibold text-white">Direct Traveler Concierge:</span>
-            Madhav Tours & Travels provides bespoke travel planning and consultation. All quotes are delivered transparently via WhatsApp and phone call. No automated checkout or gateway fees.
+            <span className="font-semibold text-white">
+              Direct Traveler Concierge:
+            </span>
+            Madhav Tours & Travels provides bespoke travel planning and
+            consultation. All quotes are delivered transparently via WhatsApp
+            and phone call. No automated checkout or gateway fees.
           </p>
         </div>
 
         {/* Bottom Copyright */}
         <div className="border-t border-white/10 py-6 pb-24 md:pb-6 text-center text-xs text-slate-400 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p>&copy; {new Date().getFullYear()} Madhav Tours & Travels. All Rights Reserved.</p>
+          <p>
+            &copy; {new Date().getFullYear()} Madhav Tours & Travels. All Rights
+            Reserved.
+          </p>
           <p className="flex items-center justify-center gap-1">
-            Crafted with sacred care <Heart className="w-3.5 h-3.5 text-[#C1122F] inline fill-current" /> for discerning travelers.
+            Crafted with sacred care{" "}
+            <Heart className="w-3.5 h-3.5 text-[#C1122F] inline fill-current" />{" "}
+            for discerning travelers.
           </p>
         </div>
       </div>

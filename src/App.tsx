@@ -33,14 +33,14 @@ export default function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/about" element={<AboutPage />} />
-              {/* <Route path="/services" element={<ServicesPage />} />
+              <Route path="/services" element={<ServicesPage />} />
               <Route path="/domestic-tours" element={<DomesticToursPage />} />
               <Route path="/international-tours" element={<InternationalToursPage />} />
               <Route path="/hotel-booking" element={<HotelBookingPage />} />
               <Route path="/air-ticket-booking" element={<AirTicketPage />} />
               <Route path="/train-ticket-booking" element={<TrainTicketPage />} />
               <Route path="/taxi-booking" element={<TaxiBookingPage />} />
-              <Route path="/personal-taxi" element={<PersonalTaxiPage />} /> */}
+              <Route path="/personal-taxi" element={<PersonalTaxiPage />} />
               <Route path="/contact" element={<ContactPage />} />
               {/* <Route path="/thank-you" element={<ThankYouPage />} />
               <Route path="/privacy-policy" element={<LegalPage type="privacy" />} />

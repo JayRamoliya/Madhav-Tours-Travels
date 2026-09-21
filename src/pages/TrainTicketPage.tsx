@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Train, Sparkles, CheckCircle2, ShieldCheck, Clock, Users, MessageSquare, Phone } from 'lucide-react';
 import { FluteDivider } from '../components/common/FluteDivider';
-import { PeacockCorner } from '../components/common/PeacockCorner';
 import { SEO } from '../components/common/SEO';
 import { InquiryModal } from '../components/common/InquiryModal';
 import { InquiryForm } from '../components/common/InquiryForm';
@@ -21,8 +20,6 @@ export const TrainTicketPage: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Railway Hero */}
         <div className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-[#072447] via-[#0B5CAD] to-[#072447] text-white p-8 sm:p-12 md:p-16 mb-12 shadow-xl border border-[#D4A017]/40">
-          <PeacockCorner position="top-left" size={60} />
-          <PeacockCorner position="bottom-right" size={60} />
 
           <div className="relative z-10 max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-[#D4A017]/40 text-[#D4A017] text-xs font-semibold uppercase tracking-wider mb-4">

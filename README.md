@@ -1,20 +1,14 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
-
-# Run and deploy your AI Studio app
-
-This contains everything you need to run your app locally.
-
-View your app in AI Studio: https://ai.studio/apps/fd3267ee-cfe3-47a6-b256-8d1efbcd852c
-
-## Run Locally
-
-**Prerequisites:**  Node.js
+Madhav tours & travels domin hosting
+Hotel booking
+Air ticket booking
+Train ticket booking
+Taxi ticket booking
+Personal taxi booking
+International tours package
+Domestic tours package
+Contact number 7069212494
+Whatsapp number +96878023801
 
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+madhavtourstravels.in
+

@@ -1,9 +1,18 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Phone, MessageSquare, Menu, X, ChevronDown, Sparkles, ArrowRight } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
-import { BrandLogo } from '../common/BrandLogo';
-import { COMPANY_DETAILS, createWhatsAppLink } from '../../data/travelData';
+import React, { useState, useEffect, useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
+import {
+  Phone,
+  MessageSquare,
+  Menu,
+  X,
+  ChevronDown,
+  Sparkles,
+  ArrowRight,
+  Download,
+} from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
+import { BrandLogo } from "../common/BrandLogo";
+import { COMPANY_DETAILS, createWhatsAppLink } from "../../data/travelData";
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -14,12 +23,14 @@ export const Navbar: React.FC = () => {
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
   const menuButtonRef = useRef<HTMLButtonElement | null>(null);
 
+  const [serviceDropdownOpen, setServiceDropdownOpen] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 15);
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Close mobile menu on route change
@@ -31,11 +42,12 @@ export const Navbar: React.FC = () => {
   // Lock body scroll and prevent layout shift while mobile menu is open
   useEffect(() => {
     if (mobileMenuOpen) {
-      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      const scrollbarWidth =
+        window.innerWidth - document.documentElement.clientWidth;
       const originalOverflow = document.body.style.overflow;
       const originalPaddingRight = document.body.style.paddingRight;
 
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
       if (scrollbarWidth > 0) {
         document.body.style.paddingRight = `${scrollbarWidth}px`;
       }
@@ -51,7 +63,10 @@ export const Navbar: React.FC = () => {
       };
     } else {
       // Return focus to menu button when closed
-      if (menuButtonRef.current && document.activeElement === closeButtonRef.current) {
+      if (
+        menuButtonRef.current &&
+        document.activeElement === closeButtonRef.current
+      ) {
         menuButtonRef.current.focus();
       }
     }
@@ -62,16 +77,17 @@ export const Navbar: React.FC = () => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!mobileMenuOpen) return;
 
-      if (e.key === 'Escape') {
+      if (e.key === "Escape") {
         setMobileMenuOpen(false);
         return;
       }
 
       // Simple focus trap inside mobile drawer
-      if (e.key === 'Tab' && drawerRef.current) {
-        const focusableElements = drawerRef.current.querySelectorAll<HTMLElement>(
-          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-        );
+      if (e.key === "Tab" && drawerRef.current) {
+        const focusableElements =
+          drawerRef.current.querySelectorAll<HTMLElement>(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+          );
         if (!focusableElements.length) return;
 
         const firstElement = focusableElements[0];
@@ -91,50 +107,91 @@ export const Navbar: React.FC = () => {
       }
     };
 
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [mobileMenuOpen]);
 
   const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'Services', path: '/services' },
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    // { name: 'Services', path: '/services' },
+  ];
+
+  const serviceLinks = [
+    {
+      name: "Hotel Booking",
+      path: "/hotel-booking",
+    },
+    {
+      name: "Homestay Booking",
+      path: "/homestay-booking",
+    },
+    {
+      name: "Air Ticket Booking",
+      path: "/air-ticket-booking",
+    },
+    {
+      name: "Train Ticket Booking",
+      path: "/train-ticket-booking",
+    },
+    {
+      name: "Personal Taxi Booking",
+      path: "/personal-taxi",
+    },
   ];
 
   const tourLinks = [
-    { name: 'Domestic Tours', path: '/domestic-tours', desc: 'Char Dham, Kashmir, Kerala, Rajasthan & Goa' },
-    { name: 'International Tours', path: '/international-tours', desc: 'Dubai, Bali, Singapore, Thailand, Maldives & Europe' },
-    { name: 'Hotel Booking', path: '/hotel-booking', desc: 'Luxury Stays, Heritage Haveli & Family Resorts' },
-    { name: 'Air Ticket Booking', path: '/air-ticket-booking', desc: 'Domestic & International Flight Assistance' },
-    { name: 'Train Ticket Booking', path: '/train-ticket-booking', desc: 'Railway & Tatkal Route Coordination' },
-    { name: 'Taxi Booking', path: '/taxi-booking', desc: 'Airport Pickup, Outstation & City Cabs' },
-    { name: 'Personal Taxi', path: '/personal-taxi', desc: 'Chauffeur-driven Innova, Fortuner & Sedans' },
+    {
+      name: "Domestic Holiday Packages",
+      path: "/domestic-tours",
+      desc: "Char Dham, Kashmir, Kerala, Rajasthan & Goa",
+    },
+    {
+      name: "International Holiday Packages",
+      path: "/international-tours",
+      desc: "Dubai, Bali, Singapore, Thailand, Maldives & Europe",
+    },
   ];
 
   // Specific order of all links requested for the mobile menu
   const mobileMenuLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'Services', path: '/services' },
-    { name: 'Domestic Tours', path: '/domestic-tours' },
-    { name: 'International Tours', path: '/international-tours' },
-    { name: 'Hotel Booking', path: '/hotel-booking' },
-    { name: 'Air Ticket Booking', path: '/air-ticket-booking' },
-    { name: 'Train Ticket Booking', path: '/train-ticket-booking' },
-    { name: 'Taxi Booking', path: '/taxi-booking' },
-    { name: 'Personal Taxi', path: '/personal-taxi' },
-    { name: 'Contact', path: '/contact' },
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Services", path: "/services" },
+
+    { name: "Hotel Booking", path: "/hotel-booking" },
+    { name: "Air Ticket Booking", path: "/air-ticket-booking" },
+    { name: "Train Ticket Booking", path: "/train-ticket-booking" },
+    {
+      name: "Homestay Booking",
+      path: "/homestay-booking",
+    },
+    { name: "Personal Taxi Booking", path: "/personal-taxi" },
+
+    { name: "Domestic Holiday Packages", path: "/domestic-tours" },
+    { name: "International Holiday Packages", path: "/international-tours" },
+
+    { name: "Contact", path: "/contact" },
   ];
 
-  const isTourActive = location.pathname.includes('tour') || location.pathname.includes('booking') || location.pathname === '/personal-taxi';
+  const isTourActive =
+    location.pathname === "/domestic-tours" ||
+    location.pathname === "/international-tours";
 
+  const isServiceActive =
+    location.pathname === "/services" ||
+    location.pathname === "/hotel-booking" ||
+    location.pathname === "/homestay-booking" ||
+    location.pathname === "/air-ticket-booking" ||
+    location.pathname === "/train-ticket-booking" ||
+    location.pathname === "/personal-taxi";
   return (
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled
-            ? 'bg-white/95 backdrop-blur-md shadow-md border-b border-[#D4A017]/30 py-2 sm:py-2.5'
-            : 'bg-white/90 sm:bg-white/80 backdrop-blur-md border-b border-[#D4A017]/20 py-2.5 sm:py-3'
+            ? "bg-white/95 backdrop-blur-md shadow-md border-b border-[#D4A017]/30 py-2 sm:py-2.5"
+            : "bg-white/90 sm:bg-white/80 backdrop-blur-md border-b border-[#D4A017]/20 py-2.5 sm:py-3"
         }`}
       >
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
@@ -158,14 +215,61 @@ export const Navbar: React.FC = () => {
                     to={item.path}
                     className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4A017] ${
                       isActive
-                        ? 'text-[#C1122F] font-semibold bg-[#FAF7F0] border-b-2 border-[#D4A017]'
-                        : 'text-slate-700 hover:text-[#0B5CAD] hover:bg-white/60'
+                        ? "text-[#C1122F] font-semibold bg-[#FAF7F0] border-b-2 border-[#D4A017]"
+                        : "text-slate-700 hover:text-[#0B5CAD] hover:bg-white/60"
                     }`}
                   >
                     {item.name}
                   </Link>
                 );
               })}
+
+              <div
+                className="relative"
+                onMouseEnter={() => setServiceDropdownOpen(true)}
+                onMouseLeave={() => setServiceDropdownOpen(false)}
+              >
+                <div className="flex items-center">
+                  <Link
+                    to="/services"
+                    className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-all ${
+                      isServiceActive
+                        ? "text-[#C1122F] font-semibold bg-[#FAF7F0] border-b-2 border-[#D4A017]"
+                        : "text-slate-700 hover:text-[#0B5CAD] hover:bg-white/60"
+                    }`}
+                  >
+                    Services
+                  </Link>
+
+                  <button
+                    type="button"
+                    onClick={() => setServiceDropdownOpen((prev) => !prev)}
+                    className="p-1 text-slate-600"
+                  >
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform ${
+                        serviceDropdownOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+                </div>
+
+                {serviceDropdownOpen && (
+                  <div className="absolute top-full left-0 w-72 pt-2 z-50">
+                    <div className="bg-white rounded-2xl shadow-2xl border border-[#D4A017]/30 p-2">
+                      {serviceLinks.map((link) => (
+                        <Link
+                          key={link.name}
+                          to={link.path}
+                          className="block px-3 py-2 rounded-xl hover:bg-[#FAF7F0]"
+                        >
+                          {link.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
 
               {/* Tour Packages Dropdown */}
               <div
@@ -178,14 +282,16 @@ export const Navbar: React.FC = () => {
                   onClick={() => setTourDropdownOpen((prev) => !prev)}
                   className={`flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-sm font-medium transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4A017] ${
                     isTourActive
-                      ? 'text-[#C1122F] font-semibold bg-[#FAF7F0] border-b-2 border-[#D4A017]'
-                      : 'text-slate-700 hover:text-[#0B5CAD] hover:bg-white/60'
+                      ? "text-[#C1122F] font-semibold bg-[#FAF7F0] border-b-2 border-[#D4A017]"
+                      : "text-slate-700 hover:text-[#0B5CAD] hover:bg-white/60"
                   }`}
                   aria-expanded={tourDropdownOpen}
                   aria-haspopup="true"
                 >
                   <span>Tour Packages</span>
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${tourDropdownOpen ? 'rotate-180 text-[#D4A017]' : ''}`} />
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform duration-200 ${tourDropdownOpen ? "rotate-180 text-[#D4A017]" : ""}`}
+                  />
                 </button>
 
                 {/* Dropdown Menu */}
@@ -206,9 +312,13 @@ export const Navbar: React.FC = () => {
                           >
                             <div className="text-sm font-medium text-slate-800 group-hover:text-[#0B5CAD] flex items-center justify-between">
                               <span>{link.name}</span>
-                              <span className="text-xs text-[#D4A017] opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span>
+                              <span className="text-xs text-[#D4A017] opacity-0 group-hover:opacity-100 transition-opacity">
+                                &rarr;
+                              </span>
                             </div>
-                            <div className="text-xs text-slate-500 line-clamp-1">{link.desc}</div>
+                            <div className="text-xs text-slate-500 line-clamp-1">
+                              {link.desc}
+                            </div>
                           </Link>
                         ))}
                       </div>
@@ -220,9 +330,9 @@ export const Navbar: React.FC = () => {
               <Link
                 to="/contact"
                 className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4A017] ${
-                  location.pathname === '/contact'
-                    ? 'text-[#C1122F] font-semibold bg-[#FAF7F0] border-b-2 border-[#D4A017]'
-                    : 'text-slate-700 hover:text-[#0B5CAD] hover:bg-white/60'
+                  location.pathname === "/contact"
+                    ? "text-[#C1122F] font-semibold bg-[#FAF7F0] border-b-2 border-[#D4A017]"
+                    : "text-slate-700 hover:text-[#0B5CAD] hover:bg-white/60"
                 }`}
               >
                 Contact
@@ -241,14 +351,14 @@ export const Navbar: React.FC = () => {
               </a>
 
               <a
-                href={createWhatsAppLink()}
+                href="/brochure.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                id="header-whatsapp-btn"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs xl:text-sm font-medium text-white bg-gradient-to-r from-[#00A86B] to-[#00925d] shadow-sm hover:shadow-md transition-all transform active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00A86B]"
+                id="header-brochure-btn"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs xl:text-sm font-medium text-white bg-gradient-to-r from-[#D4A017] to-[#B8860B] shadow-sm hover:shadow-md transition-all transform active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4A017]"
               >
-                <MessageSquare className="w-3.5 h-3.5" />
-                <span>WhatsApp Inquiry</span>
+                <Download className="w-3.5 h-3.5" />
+                <span>Download Brochure</span>
               </a>
             </div>
 
@@ -277,11 +387,19 @@ export const Navbar: React.FC = () => {
                 ref={menuButtonRef}
                 onClick={() => setMobileMenuOpen((prev) => !prev)}
                 className="min-w-[44px] min-h-[44px] p-2.5 rounded-xl bg-white border border-[#D4A017]/40 text-slate-800 hover:text-[#0B5CAD] hover:bg-slate-50 transition-colors shadow-xs flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4A017] cursor-pointer"
-                aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+                aria-label={
+                  mobileMenuOpen
+                    ? "Close navigation menu"
+                    : "Open navigation menu"
+                }
                 aria-expanded={mobileMenuOpen}
                 aria-controls="mobile-navigation-drawer"
               >
-                {mobileMenuOpen ? <X className="w-6 h-6 text-[#C1122F]" /> : <Menu className="w-6 h-6 text-[#0B5CAD]" />}
+                {mobileMenuOpen ? (
+                  <X className="w-6 h-6 text-[#C1122F]" />
+                ) : (
+                  <Menu className="w-6 h-6 text-[#0B5CAD]" />
+                )}
               </button>
             </div>
           </div>
@@ -297,7 +415,7 @@ export const Navbar: React.FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.25, ease: 'easeOut' }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
               onClick={() => setMobileMenuOpen(false)}
               className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 lg:hidden"
               aria-hidden="true"
@@ -311,10 +429,15 @@ export const Navbar: React.FC = () => {
               aria-modal="true"
               aria-label="Mobile Navigation Menu"
               data-lenis-prevent="true"
-              initial={{ x: '100%' }}
+              initial={{ x: "100%" }}
               animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 30, stiffness: 300, mass: 0.8 }}
+              exit={{ x: "100%" }}
+              transition={{
+                type: "spring",
+                damping: 30,
+                stiffness: 300,
+                mass: 0.8,
+              }}
               className="fixed top-0 right-0 bottom-0 w-full sm:w-[420px] max-w-full bg-[#FAF7F0] border-l border-[#D4A017]/40 shadow-2xl z-50 flex flex-col justify-between overflow-hidden"
             >
               {/* Drawer Top Header */}
@@ -348,41 +471,103 @@ export const Navbar: React.FC = () => {
                   <span>Explore Offerings</span>
                 </div>
 
-                {mobileMenuLinks.map((item) => {
-                  const isActive = location.pathname === item.path;
-                  return (
-                    <Link
-                      key={item.name}
-                      to={item.path}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className={`min-h-[48px] flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4A017] ${
-                        isActive
-                          ? 'text-[#C1122F] bg-white border-l-4 border-[#D4A017] shadow-sm'
-                          : 'text-slate-800 hover:bg-white/80 hover:text-[#0B5CAD]'
+                <Link
+                  to="/"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="min-h-[48px] flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold text-slate-800 hover:bg-white/80 hover:text-[#0B5CAD]"
+                >
+                  <span>Home</span>
+                  <ArrowRight className="w-4 h-4 text-slate-400" />
+                </Link>
+
+                <Link
+                  to="/about"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="min-h-[48px] flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold text-slate-800 hover:bg-white/80 hover:text-[#0B5CAD]"
+                >
+                  <span>About</span>
+                  <ArrowRight className="w-4 h-4 text-slate-400" />
+                </Link>
+                {/* Services */}
+                <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
+                  <button
+                    onClick={() => setServiceDropdownOpen(!serviceDropdownOpen)}
+                    className="w-full flex items-center justify-between px-4 py-3 font-semibold text-slate-800"
+                  >
+                    <span>Services</span>
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform ${
+                        serviceDropdownOpen ? "rotate-180" : ""
                       }`}
-                    >
-                      <span>{item.name}</span>
-                      <ArrowRight
-                        className={`w-4 h-4 transition-transform ${
-                          isActive ? 'text-[#C1122F] translate-x-0.5' : 'text-slate-400 opacity-60'
-                        }`}
-                      />
-                    </Link>
-                  );
-                })}
+                    />
+                  </button>
+
+                  {serviceDropdownOpen && (
+                    <div className="border-t border-slate-100">
+                      {serviceLinks.map((link) => (
+                        <Link
+                          key={link.name}
+                          to={link.path}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="block px-6 py-3 text-sm text-slate-700 hover:bg-[#FAF7F0]"
+                        >
+                          {link.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Tour Packages */}
+                <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
+                  <button
+                    onClick={() => setTourDropdownOpen(!tourDropdownOpen)}
+                    className="w-full flex items-center justify-between px-4 py-3 font-semibold text-slate-800"
+                  >
+                    <span>Tour Packages</span>
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform ${
+                        tourDropdownOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+
+                  {tourDropdownOpen && (
+                    <div className="border-t border-slate-100">
+                      {tourLinks.map((link) => (
+                        <Link
+                          key={link.name}
+                          to={link.path}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="block px-6 py-3 text-sm text-slate-700 hover:bg-[#FAF7F0]"
+                        >
+                          {link.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                <Link
+                  to="/contact"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="min-h-[48px] flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold text-slate-800 hover:bg-white/80 hover:text-[#0B5CAD]"
+                >
+                  <span>Contact</span>
+                  <ArrowRight className="w-4 h-4 text-slate-400" />
+                </Link>
               </div>
 
-              {/* Bottom Section: WhatsApp & Call Now Buttons */}
               <div className="p-4 bg-white/95 backdrop-blur-md border-t border-[#D4A017]/30 space-y-2.5 shrink-0 shadow-[0_-4px_16px_rgba(0,0,0,0.05)]">
-                {/* WhatsApp Button */}
+                {/* Brochure Button */}
                 <a
-                  href={createWhatsAppLink()}
+                  href="/brochure.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="min-h-[48px] w-full flex items-center justify-center gap-2.5 px-4 py-3 rounded-xl bg-gradient-to-r from-[#00A86B] to-[#008f5c] text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all transform active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00A86B]"
+                  className="min-h-[48px] w-full flex items-center justify-center gap-2.5 px-4 py-3 rounded-xl bg-gradient-to-r from-[#D4A017] to-[#B8860B] text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all transform active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4A017]"
                 >
-                  <MessageSquare className="w-4 h-4 fill-current" />
-                  <span>WhatsApp ({COMPANY_DETAILS.whatsappDisplay})</span>
+                  <Download className="w-4 h-4" />
+                  <span>Download Brochure</span>
                 </a>
 
                 {/* Call Now Button */}
@@ -401,4 +586,3 @@ export const Navbar: React.FC = () => {
     </>
   );
 };
-

@@ -20,7 +20,6 @@ export const ServicesPage: React.FC = () => {
       <SEO
         title="Our Travel Services | Madhav Tours & Travels"
         description="Comprehensive travel concierge offerings: Domestic Tours, International Tours, Hotel Bookings, Air Tickets, Train Ticket Assistance, and Personal Luxury Cabs."
-        breadcrumbs={[{ name: 'Services', path: '/services' }]}
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

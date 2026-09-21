@@ -10,9 +10,7 @@ import {
   CheckCircle2,
   ArrowRight,
 } from "lucide-react";
-import { BrandLogo } from "../components/common/BrandLogo";
 import { FluteDivider } from "../components/common/FluteDivider";
-import { PeacockCorner } from "../components/common/PeacockCorner";
 import { SEO } from "../components/common/SEO";
 import { COMPANY_DETAILS, createWhatsAppLink } from "../data/travelData";
 
@@ -20,9 +18,9 @@ export const AboutPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#FAF7F0] text-slate-800 pt-24 pb-16">
       <SEO
-        title="About Us | Madhav Tours & Travels"
-        description="Learn the story of Madhav Tours & Travels. Inspired by Lord Krishna's eternal grace, our mission is to offer personalized, honest, and luxury travel assistance across India and the globe."
-        breadcrumbs={[{ name: "About Us", path: "/about" }]}
+        title="About Madhav Tours & Travels Rajkot | Trusted Travel Agency in Gujarat"
+        description="Discover Madhav Tours & Travels, a trusted travel agency in Rajkot, Gujarat. We specialize in domestic tours, international holidays, pilgrimage journeys, hotel bookings, flights, and personalized travel planning."
+        canonicalPath="/about"
       />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">

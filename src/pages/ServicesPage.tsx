@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2, MessageSquare, Sparkles, Phone } from 'lucide-react';
 import { FluteDivider } from '../components/common/FluteDivider';
-import { PeacockCorner } from '../components/common/PeacockCorner';
 import { SEO } from '../components/common/SEO';
 import { InquiryModal } from '../components/common/InquiryModal';
 import { SERVICES_LIST, COMPANY_DETAILS } from '../data/travelData';
@@ -27,8 +26,6 @@ export const ServicesPage: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Page Hero Banner */}
         <div className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-[#072447] via-[#0B5CAD] to-[#072447] text-white p-8 sm:p-12 md:p-16 mb-12 shadow-xl border border-[#D4A017]/40">
-          <PeacockCorner position="top-left" size={60} />
-          <PeacockCorner position="bottom-right" size={60} />
 
           <div className="relative z-10 max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-[#D4A017]/40 text-[#D4A017] text-xs font-semibold uppercase tracking-wider mb-4">
@@ -72,7 +69,6 @@ export const ServicesPage: React.FC = () => {
                 idx % 2 === 1 ? 'lg:flex-row-reverse' : ''
               }`}
             >
-              <PeacockCorner position="top-right" size={40} />
 
               {/* Service Hero Banner Image */}
               <div className={`lg:col-span-5 ${idx % 2 === 1 ? 'lg:order-2' : 'lg:order-1'}`}>

@@ -69,17 +69,10 @@ export const HomePage: React.FC = () => {
         description="Experience sacred pilgrimages, domestic escapes, and international luxury holidays with Madhav Tours & Travels. Tailored tour quotes, luxury hotels, flights, and personal chauffeur cabs."
       />
 
-      {/* ========================================================= */}
-      {/* 1. HERO SECTION - Premium 4-Slide Animated Hero Slider */}
-      {/* ========================================================= */}
       <HeroSlider onOpenInquiry={openInquiryFor} />
 
-      {/* Decorative Krishna Flute Divider */}
       <FluteDivider />
 
-      {/* ========================================================= */}
-      {/* 2. SERVICES PREVIEW - Eight Premium Cards */}
-      {/* ========================================================= */}
       <section className="py-14 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#D4A017] uppercase tracking-widest bg-white px-3 py-1 rounded-full border border-[#D4A017]/30 mb-2">
@@ -94,7 +87,6 @@ export const HomePage: React.FC = () => {
           </p>
         </div>
 
-        {/* 8 Premium Cards grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {SERVICES_LIST.map((service, idx) => (
             <motion.div
@@ -105,7 +97,6 @@ export const HomePage: React.FC = () => {
               transition={{ duration: 0.5, delay: idx * 0.08 }}
               className="group relative bg-white rounded-2xl p-5 border border-[#D4A017]/30 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between overflow-hidden"
             >
-              {/* Subtle top gold accent line on card */}
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#0B5CAD] via-[#D4A017] to-[#00A86B] opacity-70 group-hover:opacity-100 transition-opacity" />
 
               <div>
@@ -154,12 +145,8 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Decorative Krishna Flute Divider */}
       <FluteDivider />
 
-      {/* ========================================================= */}
-      {/* 3. POPULAR DESTINATIONS - Beautiful Cards & Full-Width Imagery */}
-      {/* ========================================================= */}
       <section className="py-14 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
           <div>
@@ -279,12 +266,8 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Decorative Krishna Flute Divider */}
       <FluteDivider />
 
-      {/* ========================================================= */}
-      {/* 4. WHY CHOOSE US - Luxury Icon Cards */}
-      {/* ========================================================= */}
       <section className="py-14 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0B5CAD] uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full border border-[#0B5CAD]/30 mb-2">
@@ -323,9 +306,6 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* ========================================================= */}
-      {/* 5. TESTIMONIALS - Elegant Cards, No Fake Ratings */}
-      {/* ========================================================= */}
       <section className="py-14 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-10">
           <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#D4A017] uppercase tracking-widest bg-amber-50 px-3 py-1 rounded-full border border-[#D4A017]/30 mb-2">
@@ -371,12 +351,8 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Decorative Krishna Flute Divider */}
       <FluteDivider />
 
-      {/* ========================================================= */}
-      {/* 6. INQUIRY CTA - Large Krishna-Inspired Section */}
-      {/* ========================================================= */}
       <section
         id="inquiry-section"
         className="py-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto"
@@ -431,7 +407,6 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Inquiry Modal */}
       <InquiryModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}

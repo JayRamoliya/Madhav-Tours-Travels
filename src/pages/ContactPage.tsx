@@ -1,7 +1,6 @@
 import React from 'react';
 import { Phone, MessageSquare, Mail, MapPin, Clock, Sparkles, CheckCircle2, Globe } from 'lucide-react';
 import { FluteDivider } from '../components/common/FluteDivider';
-import { PeacockCorner } from '../components/common/PeacockCorner';
 import { SEO } from '../components/common/SEO';
 import { InquiryForm } from '../components/common/InquiryForm';
 import { COMPANY_DETAILS, createWhatsAppLink } from '../data/travelData';
@@ -140,7 +139,6 @@ export const ContactPage: React.FC = () => {
           {/* Interactive Information & Google Map Showcase */}
           <div className="lg:col-span-5 space-y-6">
             <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#D4A017]/30 shadow-md">
-              <PeacockCorner position="top-right" size={35} />
 
               <h3 className="font-serif text-xl font-bold text-slate-900 mb-2">
                 Why Book Inquiries With Us?

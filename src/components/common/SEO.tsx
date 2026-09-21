@@ -1,95 +1,60 @@
-import React, { useEffect } from 'react';
+import { Helmet } from "react-helmet-async";
 
 interface SEOProps {
   title: string;
   description: string;
   canonicalPath?: string;
-  breadcrumbs?: Array<{ name: string; path: string }>;
+  image?: string;
 }
 
-export const SEO: React.FC<SEOProps> = ({
+export const SEO = ({
   title,
   description,
-  canonicalPath = '',
-  breadcrumbs = [],
-}) => {
-  useEffect(() => {
-    // 1. Page Title
-    const fullTitle = title.includes('Madhav Tours & Travels')
-      ? title
-      : `${title} | Madhav Tours & Travels`;
-    document.title = fullTitle;
+  canonicalPath = "",
+  image = "/og-image.jpg",
+}: SEOProps) => {
+  const origin =
+    typeof window !== "undefined"
+      ? window.location.origin
+      : "https://madhavtourstravels.in";
 
-    // 2. Meta description
-    let metaDesc = document.querySelector('meta[name="description"]');
-    if (!metaDesc) {
-      metaDesc = document.createElement('meta');
-      metaDesc.setAttribute('name', 'description');
-      document.head.appendChild(metaDesc);
-    }
-    metaDesc.setAttribute('content', description);
+  const url = `${origin}${canonicalPath}`;
 
-    // 3. OpenGraph Tags
-    const setMeta = (property: string, content: string) => {
-      let tag = document.querySelector(`meta[property="${property}"]`);
-      if (!tag) {
-        tag = document.createElement('meta');
-        tag.setAttribute('property', property);
-        document.head.appendChild(tag);
-      }
-      tag.setAttribute('content', content);
-    };
+  const fullTitle = title.includes("Madhav Tours & Travels")
+    ? title
+    : `${title} | Madhav Tours & Travels`;
 
-    setMeta('og:title', fullTitle);
-    setMeta('og:description', description);
-    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://madhavtoursandtravels.com';
-    const currentUrl = `${origin}${canonicalPath || (typeof window !== 'undefined' ? window.location.pathname : '')}`;
-    setMeta('og:url', currentUrl);
+  return (
+    <Helmet>
+      <title>{fullTitle}</title>
 
-    // 4. Canonical Link
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonical);
-    }
-    canonical.setAttribute('href', currentUrl);
+      <meta name="description" content={description} />
+      <meta name="robots" content="index,follow" />
+      <link rel="canonical" href={url} />
 
-    // 5. Breadcrumb Schema
-    const breadcrumbSchemaId = 'breadcrumb-schema';
-    let scriptTag = document.getElementById(breadcrumbSchemaId);
-    if (breadcrumbs.length > 0) {
-      if (!scriptTag) {
-        scriptTag = document.createElement('script');
-        scriptTag.id = breadcrumbSchemaId;
-        scriptTag.setAttribute('type', 'application/ld+json');
-        document.head.appendChild(scriptTag);
-      }
+      {/* Open Graph */}
+      <meta property="og:title" content={fullTitle} />
+      <meta property="og:description" content={description} />
+      <meta property="og:url" content={url} />
+      <meta property="og:type" content="website" />
+      <meta property="og:image" content={`${origin}${image}`} />
 
-      const itemListElement = [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: 'Home',
-          item: origin,
-        },
-        ...breadcrumbs.map((crumb, idx) => ({
-          '@type': 'ListItem',
-          position: idx + 2,
-          name: crumb.name,
-          item: `${origin}${crumb.path}`,
-        })),
-      ];
+      {/* Twitter */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={fullTitle} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={`${origin}${image}`} />
 
-      scriptTag.textContent = JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'BreadcrumbList',
-        itemListElement,
-      });
-    } else if (scriptTag) {
-      scriptTag.remove();
-    }
-  }, [title, description, canonicalPath, breadcrumbs]);
-
-  return null;
+      {/* Travel Agency Schema */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "TravelAgency",
+          name: "Madhav Tours & Travels",
+          url: origin,
+          logo: `${origin}/logo.png`,
+        })}
+      </script>
+    </Helmet>
+  );
 };

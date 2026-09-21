@@ -33,7 +33,7 @@ export default function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/about" element={<AboutPage />} />
-              {/* <Route path="/services" element={<ServicesPage />} />
+              <Route path="/services" element={<ServicesPage />} />
               <Route path="/domestic-tours" element={<DomesticToursPage />} />
               <Route path="/international-tours" element={<InternationalToursPage />} />
               <Route path="/hotel-booking" element={<HotelBookingPage />} />
@@ -42,7 +42,7 @@ export default function App() {
               <Route path="/taxi-booking" element={<TaxiBookingPage />} />
               <Route path="/personal-taxi" element={<PersonalTaxiPage />} />
               <Route path="/contact" element={<ContactPage />} />
-              <Route path="/thank-you" element={<ThankYouPage />} />
+              {/* <Route path="/thank-you" element={<ThankYouPage />} />
               <Route path="/privacy-policy" element={<LegalPage type="privacy" />} />
               <Route path="/terms-and-conditions" element={<LegalPage type="terms" />} /> */}
               <Route path="*" element={<NotFoundPage />} />

@@ -146,6 +146,92 @@ export const AboutPage: React.FC = () => {
           </div>
         </div>
 
+        {/* Why Choose Us */}
+        <section className="mb-14">
+          <div className="text-center max-w-3xl mx-auto mb-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#D4A017]/30 text-[#0B5CAD] text-xs font-semibold uppercase tracking-wider mb-3">
+              <Sparkles className="w-3.5 h-3.5 text-[#D4A017]" />
+              Why Travelers Choose Us
+            </div>
+
+            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-slate-900 mb-3">
+              Travel With Confidence & Peace Of Mind
+            </h2>
+
+            <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+              Every journey is carefully planned with attention to comfort,
+              transparency, and personalized service, ensuring a seamless travel
+              experience from start to finish.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                icon: Heart,
+                title: "Personalized Planning",
+                description:
+                  "Every itinerary is customized according to your interests, budget, family requirements, and travel style.",
+                color: "text-[#C1122F]",
+              },
+              {
+                icon: Shield,
+                title: "Transparent Pricing",
+                description:
+                  "No hidden charges. We clearly explain all inclusions, exclusions, taxes, and travel costs upfront.",
+                color: "text-[#00A86B]",
+              },
+              {
+                icon: Users,
+                title: "Family-Friendly Tours",
+                description:
+                  "Special attention for senior citizens, children, and families seeking comfortable, stress-free journeys.",
+                color: "text-[#0B5CAD]",
+              },
+              {
+                icon: Award,
+                title: "Trusted Service",
+                description:
+                  "We focus on long-term relationships, honest guidance, and customer satisfaction rather than quick sales.",
+                color: "text-[#D4A017]",
+              },
+              {
+                icon: Compass,
+                title: "Expert Travel Guidance",
+                description:
+                  "Receive destination insights, practical advice, and itinerary recommendations from experienced planners.",
+                color: "text-[#0B5CAD]",
+              },
+              {
+                icon: CheckCircle2,
+                title: "Dedicated Support",
+                description:
+                  "Quick assistance before, during, and after your trip through phone and WhatsApp support.",
+                color: "text-[#00A86B]",
+              },
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-2xl p-6 border border-[#D4A017]/20 shadow-sm hover:shadow-lg transition-all duration-300"
+              >
+                <div
+                  className={`w-12 h-12 rounded-xl bg-[#FAF7F0] border border-[#D4A017]/20 flex items-center justify-center mb-4 ${item.color}`}
+                >
+                  <item.icon className="w-6 h-6" />
+                </div>
+
+                <h3 className="font-serif text-xl font-bold text-slate-900 mb-2">
+                  {item.title}
+                </h3>
+
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* Personalized Travel Planning & Customer-First Approach */}
         <div className="bg-white rounded-3xl p-8 sm:p-12 border border-[#D4A017]/30 shadow-lg mb-14">
           <div className="max-w-3xl mx-auto text-center mb-8">
@@ -202,6 +288,77 @@ export const AboutPage: React.FC = () => {
             </div>
           </div>
         </div>
+
+        {/* FAQ Section */}
+        <section className="mb-14">
+          <div className="text-center max-w-3xl mx-auto mb-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#D4A017]/30 text-[#0B5CAD] text-xs font-semibold uppercase tracking-wider mb-3">
+              <Sparkles className="w-3.5 h-3.5 text-[#D4A017]" />
+              Frequently Asked Questions
+            </div>
+
+            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-slate-900 mb-3">
+              Answers To Common Travel Questions
+            </h2>
+
+            <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+              Find quick answers about our tour packages, bookings, travel
+              planning, and customer support services.
+            </p>
+          </div>
+
+          <div className="space-y-4 max-w-4xl mx-auto">
+            {[
+              {
+                question: "What services does Madhav Tours & Travels provide?",
+                answer:
+                  "We offer domestic tours, international holiday packages, pilgrimage tours, hotel bookings, flight reservations, transportation arrangements, and customized travel planning.",
+              },
+              {
+                question: "Do you provide customized tour packages?",
+                answer:
+                  "Yes. Every itinerary can be tailored according to your budget, travel dates, destination preferences, family requirements, and sightseeing interests.",
+              },
+              {
+                question: "Can you arrange hotel and flight bookings?",
+                answer:
+                  "Absolutely. We assist with hotel reservations, flight bookings, transportation, and complete travel coordination for a hassle-free experience.",
+              },
+              {
+                question: "Do you organize pilgrimage tours from Gujarat?",
+                answer:
+                  "Yes. We specialize in pilgrimage tours including Dwarka, Somnath, Char Dham, Vaishno Devi, Ayodhya, and many other spiritual destinations.",
+              },
+              {
+                question: "Are there any hidden charges in your packages?",
+                answer:
+                  "No. We believe in transparent pricing and clearly explain inclusions, exclusions, taxes, and additional costs before booking.",
+              },
+              {
+                question: "How can I get a travel quotation?",
+                answer:
+                  "You can contact us through WhatsApp, phone, or our inquiry form. Our team will prepare a personalized quotation based on your travel requirements.",
+              },
+            ].map((faq, index) => (
+              <details
+                key={index}
+                className="group bg-white rounded-2xl border border-[#D4A017]/20 shadow-sm overflow-hidden"
+              >
+                <summary className="flex items-center justify-between cursor-pointer list-none p-5 font-semibold text-slate-900">
+                  <span>{faq.question}</span>
+
+                  <ArrowRight className="w-4 h-4 text-[#0B5CAD] transition-transform duration-300 group-open:rotate-90" />
+                </summary>
+
+                <div className="px-5 pb-5">
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
 
         {/* CTA banner */}
         <div className="rounded-2xl bg-gradient-to-r from-[#072447] via-[#0B5CAD] to-[#072447] text-white p-8 sm:p-10 text-center border border-[#D4A017]/40 shadow-xl">

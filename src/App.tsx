@@ -42,9 +42,9 @@ export default function App() {
               <Route path="/taxi-booking" element={<TaxiBookingPage />} />
               <Route path="/personal-taxi" element={<PersonalTaxiPage />} /> */}
               <Route path="/contact" element={<ContactPage />} />
-              {/* <Route path="/thank-you" element={<ThankYouPage />} />
+              <Route path="/thank-you" element={<ThankYouPage />} />
               <Route path="/privacy-policy" element={<LegalPage type="privacy" />} />
-              <Route path="/terms-and-conditions" element={<LegalPage type="terms" />} /> */}
+              <Route path="/terms-and-conditions" element={<LegalPage type="terms" />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </main>

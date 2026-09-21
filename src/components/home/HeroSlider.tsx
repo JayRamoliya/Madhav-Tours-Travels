@@ -174,33 +174,10 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onOpenInquiry }) => {
       {/* Background Subtle Divine Halo Glow */}
       <div className="hero-gold-glow absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] sm:w-[700px] sm:h-[700px] rounded-full bg-radial from-[#D4A017]/15 via-[#0B5CAD]/5 to-transparent blur-3xl pointer-events-none" />
 
-      {/* Decorative Krishna Flute Watermark in top right */}
       <div className="absolute -top-12 -right-16 w-80 h-80 opacity-5 pointer-events-none hidden sm:block">
-        {/* <svg viewBox="0 0 200 200" fill="none" className="w-full h-full stroke-slate-900">
-          <path d="M20 180 L180 20" strokeWidth="3" />
-          <circle cx="60" cy="140" r="4" fill="currentColor" />
-          <circle cx="80" cy="120" r="4" fill="currentColor" />
-          <circle cx="100" cy="100" r="4" fill="currentColor" />
-          <circle cx="120" cy="80" r="4" fill="currentColor" />
-          <circle cx="140" cy="60" r="4" fill="currentColor" />
-        </svg> */}
       </div>
 
-      {/* Floating Krishna Peacock Feather Motif on the Left */}
       <div className="hero-ambient-float absolute top-12 left-4 sm:left-12 pointer-events-none hidden md:block opacity-70">
-        {/* <svg viewBox="0 0 80 120" className="w-14 h-20 filter drop-shadow-[0_4px_10px_rgba(0,168,107,0.2)]">
-          <path d="M40 10 C20 30 15 70 40 100 C65 70 60 30 40 10 Z" fill="url(#heroFeatherGrad)" stroke="#00A86B" strokeWidth="1" />
-          <ellipse cx="40" cy="48" rx="12" ry="18" fill="#0B5CAD" />
-          <ellipse cx="40" cy="52" rx="8" ry="12" fill="#00A86B" />
-          <circle cx="40" cy="54" r="4" fill="#D4A017" />
-          <defs>
-            <linearGradient id="heroFeatherGrad" x1="15" y1="10" x2="65" y2="100" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#00A86B" />
-              <stop offset="50%" stopColor="#0B5CAD" />
-              <stop offset="100%" stopColor="#D4A017" />
-            </linearGradient>
-          </defs>
-        </svg> */}
       </div>
 
       {/* Main Container */}
@@ -481,9 +458,6 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onOpenInquiry }) => {
             </motion.div>
           )}
 
-          {/* ======================================================== */}
-          {/* SLIDE 3 — GLOBAL ESCAPES */}
-          {/* ======================================================== */}
           {currentIndex === 2 && (
             <motion.div
               key="slide-global-escapes"
@@ -590,7 +564,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onOpenInquiry }) => {
 
                   {/* International Luxury Destination Image: Maldives Resort */}
                   <img
-                    src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1200&q=85"
+                    src="https://images.unsplash.com/photo-1532186651327-6ac23687d189?q=80&w=749&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     alt="Maldives Luxury Overwater Villas"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"

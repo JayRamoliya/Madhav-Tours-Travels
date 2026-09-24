@@ -20,6 +20,8 @@ import { ThankYouPage } from './pages/ThankYouPage';
 import { LegalPage } from './pages/LegalPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { HomestayBookingPage } from './pages/HomestayBookingPage';
+import { DomesticTourDetailsPage } from './pages/DomesticTourDetailsPage.tsx';
+import { InternationalTourDetailsPage } from './pages/InternationalTourDetailsPage.tsx';
 
 export default function App() {
   return (
@@ -39,6 +41,10 @@ export default function App() {
 
               <Route path="/domestic-tours" element={<DomesticToursPage />} />
               <Route path="/international-tours" element={<InternationalToursPage />} />
+
+              <Route path="/domestic-tours/:slug" element={<DomesticTourDetailsPage />} />
+<Route path="/international-tours/:slug" element={<InternationalTourDetailsPage />} />
+              
 
               <Route path="/hotel-booking" element={<HotelBookingPage />} />
               <Route path="/air-ticket-booking" element={<AirTicketPage />} />

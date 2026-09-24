@@ -1,7 +1,7 @@
 export interface TourPackage {
   id: string;
   title: string;
-  category: 'domestic' | 'international' | 'pilgrimage' | 'family' | 'couple';
+  category: "domestic" | "international" | "pilgrimage" | "family" | "couple";
   destination: string;
   duration: string;
   image: string;
@@ -10,6 +10,13 @@ export interface TourPackage {
   inclusions: string[];
   bestTime: string;
   badge?: string;
+  startingPrice: number;
+  tourType?: string;
+  month?: string;
+  departureCity?: string;
+  theme?: string;
+  season?: string;
+  days?: number;
 }
 
 export interface TravelService {
@@ -27,7 +34,7 @@ export interface TravelService {
 export interface VehicleOption {
   id: string;
   name: string;
-  type: 'Sedan' | 'SUV' | 'Tempo Traveller' | 'Luxury Chauffeur';
+  type: "Sedan" | "SUV" | "Tempo Traveller" | "Luxury Chauffeur";
   seating: string;
   luggage: string;
   features: string[];

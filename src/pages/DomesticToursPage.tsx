@@ -1,27 +1,88 @@
-import React, { useState } from 'react';
-import { Sparkles, Calendar, MapPin, CheckCircle2, MessageSquare, Filter } from 'lucide-react';
-import { FluteDivider } from '../components/common/FluteDivider';
-import { SEO } from '../components/common/SEO';
-import { InquiryModal } from '../components/common/InquiryModal';
-import { DOMESTIC_PACKAGES, createWhatsAppLink } from '../data/travelData';
-
+import React, { useState } from "react";
+import {
+  Sparkles,
+  Calendar,
+  MapPin,
+  CheckCircle2,
+  MessageSquare,
+  Grid3X3,
+  List,
+} from "lucide-react";
+import { Link } from "react-router-dom";
+import { FluteDivider } from "../components/common/FluteDivider";
+import { SEO } from "../components/common/SEO";
+import { InquiryModal } from "../components/common/InquiryModal";
+import {
+  DOMESTIC_PACKAGES,
+  COMPANY_DETAILS,
+  createWhatsAppLink,
+} from "../data/travelData";
 export const DomesticToursPage: React.FC = () => {
-  const [filter, setFilter] = useState<'all' | 'pilgrimage' | 'family' | 'couple' | 'group'>('all');
+  const [filter, setFilter] = useState<
+    "all" | "pilgrimage" | "family" | "couple" | "group"
+  >("all");
   const [modalOpen, setModalOpen] = useState(false);
-  const [selectedTour, setSelectedTour] = useState('');
+  const [selectedTour, setSelectedTour] = useState("");
+  const [view, setView] = useState<"card" | "list">("list");
+  const [showFilters, setShowFilters] = useState(false);
+
+  const [filters, setFilters] = useState({
+    tourType: "All",
+    month: "All",
+    departureCity: "All",
+    theme: "All",
+    season: "All",
+    minBudget: 0,
+    maxBudget: 200000,
+    minDays: 1,
+    maxDays: 15,
+  });
 
   const handleQuoteClick = (title: string) => {
     setSelectedTour(title);
     setModalOpen(true);
   };
 
+  const tourTypes = [
+    "All",
+    ...new Set(DOMESTIC_PACKAGES.map((p) => p.tourType).filter(Boolean)),
+  ];
+
+  const months = [
+    "All",
+    ...new Set(DOMESTIC_PACKAGES.map((p) => p.month).filter(Boolean)),
+  ];
+
+  const departureCities = [
+    "All",
+    ...new Set(DOMESTIC_PACKAGES.map((p) => p.departureCity).filter(Boolean)),
+  ];
+
+  const themes = [
+    "All",
+    ...new Set(DOMESTIC_PACKAGES.map((p) => p.theme).filter(Boolean)),
+  ];
+
+  const seasons = [
+    "All",
+    ...new Set(DOMESTIC_PACKAGES.map((p) => p.season).filter(Boolean)),
+  ];
+
   const filteredPackages = DOMESTIC_PACKAGES.filter((pkg) => {
-    if (filter === 'all') return true;
-    if (filter === 'pilgrimage') return pkg.category === 'pilgrimage';
-    if (filter === 'couple') return pkg.id === 'kashmir' || pkg.id === 'kerala' || pkg.id === 'goa';
-    if (filter === 'family') return pkg.id === 'rajasthan' || pkg.id === 'himachal' || pkg.id === 'kashmir';
-    if (filter === 'group') return pkg.category === 'pilgrimage' || pkg.id === 'rajasthan';
-    return true;
+    const days = pkg.days ?? 0;
+
+    return (
+      (filters.tourType === "All" || pkg.tourType === filters.tourType) &&
+      (filters.month === "All" || pkg.month === filters.month) &&
+      (filters.departureCity === "All" ||
+        pkg.departureCity === filters.departureCity) &&
+      (filters.theme === "All" || pkg.theme === filters.theme) &&
+      (filters.season === "All" || pkg.season === filters.season) &&
+      pkg.startingPrice >= filters.minBudget &&
+      pkg.startingPrice <= filters.maxBudget &&
+      days >= filters.minDays &&
+      days <= filters.maxDays
+    );
   });
 
   return (
@@ -29,187 +90,420 @@ export const DomesticToursPage: React.FC = () => {
       <SEO
         title="Domestic Luxury Tours & Pilgrimages | Madhav Tours & Travels"
         description="Bespoke domestic tours across India: Char Dham Yatra, Kashmir Valley, Kerala Backwaters, Royal Rajasthan, Himachal, and Goa. Get custom quotations without online booking fees."
-        breadcrumbs={[{ name: 'Domestic Tours', path: '/domestic-tours' }]}
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header Showcase */}
         <div className="text-center max-w-3xl mx-auto mb-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#D4A017]/40 text-[#0B5CAD] text-xs font-semibold uppercase tracking-wider mb-3">
             <Sparkles className="w-3.5 h-3.5 text-[#D4A017]" />
             Sacred Pilgrimages & Royal Heritage
           </div>
           <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
-            Discover India in <span className="text-[#C1122F]">Royal Comfort</span>
+            Discover India in{" "}
+            <span className="text-[#C1122F]">Royal Comfort</span>
           </h1>
           <p className="text-base text-slate-600 mt-2 leading-relaxed">
-            From the spiritual silence of the Himalayas to the tranquil tropical lagoons of the South. Tailor-made with private vehicles, verified hotels, and elder-friendly pacing.
+            From the spiritual silence of the Himalayas to the tranquil tropical
+            lagoons of the South. Tailor-made with private vehicles, verified
+            hotels, and elder-friendly pacing.
           </p>
-        </div>
-
-        {/* Category Filters: Popular Indian destinations, Family tours, Couple tours, Group tours, Pilgrimage tours */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
-          <button
-            onClick={() => setFilter('all')}
-            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all cursor-pointer ${
-              filter === 'all'
-                ? 'bg-[#0B5CAD] text-white shadow-md'
-                : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
-            }`}
-          >
-            All Destinations
-          </button>
-          <button
-            onClick={() => setFilter('pilgrimage')}
-            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all cursor-pointer ${
-              filter === 'pilgrimage'
-                ? 'bg-[#C1122F] text-white shadow-md'
-                : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
-            }`}
-          >
-            Pilgrimage & Char Dham
-          </button>
-          <button
-            onClick={() => setFilter('family')}
-            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all cursor-pointer ${
-              filter === 'family'
-                ? 'bg-[#0B5CAD] text-white shadow-md'
-                : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
-            }`}
-          >
-            Family Tours
-          </button>
-          <button
-            onClick={() => setFilter('couple')}
-            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all cursor-pointer ${
-              filter === 'couple'
-                ? 'bg-[#0B5CAD] text-white shadow-md'
-                : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
-            }`}
-          >
-            Couple & Honeymoon
-          </button>
-          <button
-            onClick={() => setFilter('group')}
-            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all cursor-pointer ${
-              filter === 'group'
-                ? 'bg-[#0B5CAD] text-white shadow-md'
-                : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
-            }`}
-          >
-            Group & Elder Special
-          </button>
         </div>
 
         <FluteDivider />
 
-        {/* Tours Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {filteredPackages.map((pkg) => (
-            <div
-              key={pkg.id}
-              className="bg-white rounded-3xl overflow-hidden border border-[#D4A017]/30 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
-            >
-              <div>
-                {/* Image */}
-                <div className="relative h-60 w-full overflow-hidden bg-slate-100">
-                  <img
-                    src={pkg.image}
-                    alt={pkg.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+        <div className="bg-white rounded-3xl border border-slate-200 shadow-lg p-5 mb-10">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-5">
+            <div>
+              <h3 className="text-lg font-bold text-slate-900">
+                Find Your Perfect Tour
+              </h3>
+              <p className="text-sm text-slate-500">
+                Filter destinations by type, budget, duration and season
+              </p>
+            </div>
 
-                  {pkg.badge && (
-                    <span className="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white/95 text-[#0B5CAD] shadow-xs">
-                      {pkg.badge}
-                    </span>
-                  )}
+            <div className="flex items-center justify-between gap-2">
+              <button
+                onClick={() => setShowFilters(!showFilters)}
+                className="md:hidden px-4 h-11 rounded-xl bg-[#0B5CAD] text-white text-sm font-medium"
+              >
+                {showFilters ? "Close Filters" : "Filters"}
+              </button>
 
-                  <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full text-[10px] font-medium bg-black/60 text-white flex items-center gap-1">
-                    <Calendar className="w-3 h-3 text-[#D4A017]" />
-                    <span>{pkg.duration}</span>
-                  </div>
-
-                  <div className="absolute bottom-3 left-4 right-4 text-white">
-                    <span className="text-[11px] font-semibold text-[#D4A017] uppercase tracking-wider flex items-center gap-1">
-                      <MapPin className="w-3 h-3" /> {pkg.destination}
-                    </span>
-                    <h3 className="font-serif text-xl font-bold leading-snug">
-                      {pkg.title}
-                    </h3>
-                  </div>
-                </div>
-
-                {/* Details */}
-                <div className="p-6 space-y-4">
-                  <p className="text-xs text-slate-600 italic">
-                    &ldquo;{pkg.tagline}&rdquo;
-                  </p>
-
-                  <div>
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-[#0B5CAD] mb-2">
-                      Key Experiences:
-                    </h4>
-                    <ul className="space-y-1.5 text-xs text-slate-700">
-                      {pkg.highlights.map((h, i) => (
-                        <li key={i} className="flex items-start gap-1.5">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#00A86B] shrink-0 mt-0.5" />
-                          <span>{h}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="pt-2">
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">
-                      Inclusions:
-                    </h4>
-                    <div className="flex flex-wrap gap-1.5">
-                      {pkg.inclusions.map((inc, i) => (
-                        <span
-                          key={i}
-                          className="px-2 py-0.5 rounded-md bg-[#FAF7F0] border border-[#D4A017]/30 text-[11px] text-slate-700"
-                        >
-                          {inc}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Every package has: Get Custom Quote button as requested */}
-              <div className="p-6 pt-0 border-t border-slate-100 mt-2 flex items-center justify-between gap-3">
-                <div className="flex flex-col">
-                  <span className="text-[10px] text-slate-400 uppercase font-semibold">Pricing</span>
-                  <span className="text-xs font-bold text-[#C1122F]">Custom Quote</span>
-                </div>
+              {/* View Toggle */}
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setView("card")}
+                  className={`p-3 rounded-xl transition ${
+                    view === "card"
+                      ? "bg-[#0B5CAD] text-white"
+                      : "bg-slate-100 text-slate-600"
+                  }`}
+                >
+                  <Grid3X3 size={18} />
+                </button>
 
                 <button
-                  onClick={() => handleQuoteClick(pkg.title)}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#0B5CAD] to-[#084887] text-white text-xs font-medium shadow-sm hover:shadow-md transition-all cursor-pointer"
+                  onClick={() => setView("list")}
+                  className={`p-3 rounded-xl transition ${
+                    view === "list"
+                      ? "bg-[#0B5CAD] text-white"
+                      : "bg-slate-100 text-slate-600"
+                  }`}
                 >
-                  <MessageSquare className="w-3.5 h-3.5" />
-                  <span>Get Custom Quote</span>
+                  <List size={18} />
                 </button>
               </div>
             </div>
-          ))}
+          </div>
+          <div className={`${showFilters ? "block" : "hidden"} md:block`}>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-2">
+                  Tour Type
+                </label>
+                <select
+                  className="w-full h-12 px-4 rounded-xl border border-slate-200 bg-slate-50"
+                  value={filters.tourType}
+                  onChange={(e) =>
+                    setFilters({ ...filters, tourType: e.target.value })
+                  }
+                >
+                  {tourTypes.map((item) => (
+                    <option key={item}>{item}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-2">
+                  Travel Month
+                </label>
+                <select
+                  className="w-full h-12 px-4 rounded-xl border border-slate-200 bg-slate-50"
+                  value={filters.month}
+                  onChange={(e) =>
+                    setFilters({ ...filters, month: e.target.value })
+                  }
+                >
+                  {months.map((item) => (
+                    <option key={item}>{item}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-2">
+                  Departure City
+                </label>
+                <select
+                  className="w-full h-12 px-4 rounded-xl border border-slate-200 bg-slate-50"
+                  value={filters.departureCity}
+                  onChange={(e) =>
+                    setFilters({
+                      ...filters,
+                      departureCity: e.target.value,
+                    })
+                  }
+                >
+                  {departureCities.map((item) => (
+                    <option key={item}>{item}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-2">
+                  Theme
+                </label>
+                <select
+                  className="w-full h-12 px-4 rounded-xl border border-slate-200 bg-slate-50"
+                  value={filters.theme}
+                  onChange={(e) =>
+                    setFilters({ ...filters, theme: e.target.value })
+                  }
+                >
+                  {themes.map((item) => (
+                    <option key={item}>{item}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-2">
+                  Season
+                </label>
+                <select
+                  className="w-full h-12 px-4 rounded-xl border border-slate-200 bg-slate-50"
+                  value={filters.season}
+                  onChange={(e) =>
+                    setFilters({ ...filters, season: e.target.value })
+                  }
+                >
+                  {seasons.map((item) => (
+                    <option key={item}>{item}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-2">
+                  Maximum Budget
+                </label>
+                <div className="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3">
+                  <div className="flex justify-between text-xs mb-2">
+                    <span>Budget</span>
+                    <span className="font-semibold">
+                      ₹{filters.maxBudget.toLocaleString()}
+                    </span>
+                  </div>
+                  <input
+                    type="range"
+                    min={10000}
+                    max={300000}
+                    step={5000}
+                    value={filters.maxBudget}
+                    onChange={(e) =>
+                      setFilters({
+                        ...filters,
+                        maxBudget: Number(e.target.value),
+                      })
+                    }
+                    className="w-full accent-[#0B5CAD]"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-2">
+                  Trip Duration
+                </label>
+                <div className="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3">
+                  <div className="flex justify-between text-xs mb-2">
+                    <span>Duration</span>
+                    <span className="font-semibold">
+                      {filters.maxDays} Days
+                    </span>
+                  </div>
+                  <input
+                    type="range"
+                    min={1}
+                    max={20}
+                    value={filters.maxDays}
+                    onChange={(e) =>
+                      setFilters({
+                        ...filters,
+                        maxDays: Number(e.target.value),
+                      })
+                    }
+                    className="w-full accent-[#0B5CAD]"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-2">
+                  Actions
+                </label>
+                <button
+                  onClick={() =>
+                    setFilters({
+                      tourType: "All",
+                      month: "All",
+                      departureCity: "All",
+                      theme: "All",
+                      season: "All",
+                      minBudget: 0,
+                      maxBudget: 200000,
+                      minDays: 1,
+                      maxDays: 15,
+                    })
+                  }
+                  className="w-full h-12 rounded-xl bg-[#C1122F] text-white font-medium hover:opacity-90"
+                >
+                  Reset Filters
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* Sacred Pilgrimage Special Banner */}
-        <div className="relative rounded-3xl bg-white p-8 sm:p-10 border-2 border-[#D4A017]/50 shadow-xl overflow-hidden text-center max-w-4xl mx-auto">
+        <div className="mb-16">
+          {view === "card" ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {filteredPackages.map((pkg) => (
+                <div
+                  key={pkg.id}
+                  className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition flex flex-col"
+                >
+                  <div className="relative">
+                    <img
+                      src={pkg.image}
+                      alt={pkg.title}
+                      className="h-48 sm:h-56 w-full object-cover"
+                    />
 
+                    {pkg.badge && (
+                      <span className="absolute top-3 left-3 bg-white text-[#0B5CAD] text-[11px] font-semibold px-2.5 py-1 rounded-full shadow">
+                        {pkg.badge}
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="p-4 flex flex-col flex-1">
+                    <h3 className="text-lg font-bold text-slate-900 line-clamp-2">
+                      {pkg.title}
+                    </h3>
+
+                    <div className="flex items-start gap-2 mt-2 text-sm text-slate-500">
+                      <MapPin size={14} className="shrink-0 mt-0.5" />
+                      <span className="line-clamp-1">{pkg.destination}</span>
+                    </div>
+
+                    <div className="flex items-center gap-2 mt-2 text-sm text-slate-500">
+                      <Calendar size={14} />
+                      {pkg.duration}
+                    </div>
+
+                    <p className="text-sm text-slate-600 mt-3 line-clamp-2">
+                      {pkg.tagline}
+                    </p>
+
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {pkg.inclusions?.slice(0, 2).map((item) => (
+                        <span
+                          key={item}
+                          className="px-2 py-1 bg-slate-100 rounded-full text-[11px]"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="mt-auto pt-4">
+                      <div className="flex items-end justify-between">
+                        <div>
+                          <div className="text-2xl font-bold text-[#0B5CAD]">
+                            ₹{(pkg.startingPrice ?? 0).toLocaleString()}
+                          </div>
+                          <div className="text-xs text-slate-500">
+                            per person
+                          </div>
+                        </div>
+
+                        <div className="text-xs px-2 py-1 rounded-lg bg-blue-50 text-[#0B5CAD]">
+                          {pkg.duration}
+                        </div>
+                      </div>
+
+                      <Link
+                        to={`/domestic-tours/${pkg.id}`}
+                        className="mt-4 block text-center bg-[#C1122F] text-white py-3 rounded-xl font-medium"
+                      >
+                        View Details
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="space-y-6">
+              {filteredPackages.map((pkg) => (
+                <div
+                  key={pkg.id}
+                  className="bg-white rounded-3xl shadow-md hover:shadow-lg transition p-5 flex flex-col lg:flex-row gap-6"
+                >
+                  <img
+                    src={pkg.image}
+                    alt={pkg.title}
+                    className="w-full lg:w-72 h-56 object-cover rounded-2xl"
+                  />
+
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold text-slate-900">
+                      {pkg.title}
+                    </h3>
+
+                    <div className="flex items-center gap-2 mt-2 text-sm text-slate-500">
+                      <MapPin size={16} />
+                      {pkg.destination}
+                    </div>
+
+                    <p className="text-sm text-slate-600 mt-3">{pkg.tagline}</p>
+
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {pkg.inclusions?.slice(0, 4).map((item) => (
+                        <span
+                          key={item}
+                          className="px-3 py-1 bg-slate-100 rounded-full text-xs"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="flex flex-wrap gap-2 mt-5">
+                      {pkg.badge && (
+                        <span className="px-3 py-1 rounded-lg bg-blue-50 text-[#0B5CAD] text-xs font-semibold">
+                          {pkg.badge}
+                        </span>
+                      )}
+
+                      <span className="px-3 py-1 rounded-lg bg-green-50 text-green-700 text-xs font-semibold">
+                        Best Time: {pkg.bestTime}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="lg:w-64 flex flex-col justify-between items-end">
+                    <div className="border border-slate-300 rounded-xl px-4 py-2 text-sm font-medium">
+                      {pkg.duration}
+                    </div>
+
+                    <div className="text-right mt-5 lg:mt-0">
+                      <div className="text-4xl font-bold text-[#0B5CAD]">
+                        ₹{(pkg.startingPrice ?? 0).toLocaleString()}
+                      </div>
+
+                      <div className="text-sm text-slate-500">per person</div>
+                    </div>
+
+                    <div className="flex gap-2 mt-5">
+                      <a
+                        href={`tel:${COMPANY_DETAILS.phone}`}
+                        className="px-4 py-2 border border-[#0B5CAD] text-[#0B5CAD] rounded-xl text-sm font-medium"
+                      >
+                        Call Now
+                      </a>
+
+                      <Link
+                        to={`/domestic-tours/${pkg.id}`}
+                        className="px-4 py-2 bg-[#C1122F] text-white rounded-xl text-sm font-medium"
+                      >
+                        View Details
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="relative rounded-3xl bg-white p-8 sm:p-10 border-2 border-[#D4A017]/50 shadow-xl overflow-hidden text-center max-w-4xl mx-auto">
           <h3 className="font-serif text-2xl sm:text-3xl font-bold text-slate-900 mb-2">
             Planning Char Dham, Vaishno Devi, or Ayodhya-Kashi?
           </h3>
           <p className="text-sm text-slate-600 max-w-xl mx-auto mb-6">
-            We specialize in providing elder-accessible vehicles, helicopter tickets, VIP darshan assistance, and pure sattvik meals for holy pilgrimages.
+            We specialize in providing elder-accessible vehicles, helicopter
+            tickets, VIP darshan assistance, and pure sattvik meals for holy
+            pilgrimages.
           </p>
           <a
-            href={createWhatsAppLink("Hi Madhav Tours & Travels, I need assistance for a sacred Pilgrimage Yatra. Please share details.")}
+            href={createWhatsAppLink(
+              "Hi Madhav Tours & Travels, I need assistance for a sacred Pilgrimage Yatra. Please share details.",
+            )}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-[#00A86B] text-white font-medium text-sm shadow-md hover:bg-[#00925d]"

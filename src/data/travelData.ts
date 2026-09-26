@@ -24,7 +24,7 @@ export const COMPANY_DETAILS = {
     softIvory: "#FAF7F0",
   },
   social: {
-    facebook: "#",
+    facebook: "https://www.facebook.com/profile.php?id=61594793184543",
     instagram: "https://www.instagram.com/madhav.tourstravels/",
     youtube: "https://www.youtube.com/channel/UCCcioLZGqIVISZ5_Xxawa2g",
   },
